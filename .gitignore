@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/
+config/profile.yaml
+config/answers.yaml
+*.egg-info/
+config/foto.*

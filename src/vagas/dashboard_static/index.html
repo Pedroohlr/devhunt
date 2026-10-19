@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vagas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --bg-a: #eef1f6; --bg-b: #f7f8fb; --bg-c: #e9eef7;
+  --glass: rgba(255,255,255,.58); --glass-strong: rgba(255,255,255,.78); --glass-border: rgba(20,30,50,.08);
+  --ink: #1d1d1f; --ink-2: #4b4f57; --ink-3: #86898f; --hair: rgba(20,30,50,.08);
+  --blue: #007aff; --blue-soft: rgba(0,122,255,.10); --green: #34c759; --green-soft: rgba(52,199,89,.14);
+  --orange: #ff9f0a; --orange-soft: rgba(255,159,10,.16); --red: #ff3b30; --red-soft: rgba(255,59,48,.12);
+  --chart-1: #007aff; --chart-2: #34c759;
+  --radius: 18px; --radius-s: 10px; --sidebar: 248px;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: Inter, -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif; font-size: 14px; line-height: 1.45; color: var(--ink);
+  background: radial-gradient(1200px 700px at 8% -10%, #dfe7f5 0%, transparent 60%), radial-gradient(900px 600px at 100% 20%, #e8f1ff 0%, transparent 55%), linear-gradient(180deg, var(--bg-a), var(--bg-b) 45%, var(--bg-c));
+  background-attachment: fixed; font-feature-settings: "tnum" 1, "cv11" 1;
+}
+a { color: var(--blue); text-decoration: none; } a:hover { text-decoration: underline; }
+button { font: inherit; }
+.app { display: grid; grid-template-columns: var(--sidebar) 1fr; min-height: 100vh; }
+
+/* ---------- sidebar ---------- */
+.side { position: sticky; top: 0; height: 100vh; padding: 22px 14px; background: var(--glass); backdrop-filter: blur(28px) saturate(170%); -webkit-backdrop-filter: blur(28px) saturate(170%); border-right: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 4px 8px 8px; }
+.brand .dot { width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, #5ac8fa, #007aff); box-shadow: 0 6px 14px rgba(0,122,255,.25); }
+.brand b { font-weight: 600; font-size: 15px; } .brand span { display: block; font-size: 12px; color: var(--ink-3); }
+.nav h6 { margin: 8px 8px 4px; font-size: 11px; font-weight: 600; color: var(--ink-3); letter-spacing: .2px; }
+.nav a { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 10px; color: var(--ink); font-weight: 500; }
+.nav a:hover { background: rgba(255,255,255,.55); text-decoration: none; }
+.nav a.active { background: var(--blue); color: #fff; box-shadow: 0 6px 16px rgba(0,122,255,.28); }
+.nav a .n { font-size: 12px; color: var(--ink-3); background: rgba(20,30,50,.06); padding: 1px 8px; border-radius: 999px; } .nav a.active .n { background: rgba(255,255,255,.22); color: #fff; }
+.side .foot { margin-top: auto; font-size: 12px; color: var(--ink-3); padding: 0 8px; } .side .foot b { color: var(--ink-2); font-weight: 500; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+.pill i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.pill.on { background: var(--green-soft); color: #1f7a33; } .pill.on i { background: var(--green); }
+.pill.off { background: rgba(20,30,50,.06); color: var(--ink-2); } .pill.off i { background: var(--ink-3); }
+
+/* ---------- main ---------- */
+.main { min-width: 0; }
+.topbar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; background: rgba(247,248,251,.55); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-bottom: 1px solid var(--hair); }
+.topbar h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.3px; } .topbar .sub { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+.topbar .actions { display: flex; gap: 8px; align-items: center; }
+.search { width: 280px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--hair); background: rgba(255,255,255,.7); outline: none; }
+.search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+.content { padding: 22px 28px 60px; display: grid; gap: 18px; grid-template-columns: repeat(12, 1fr); }
+.panel { background: var(--glass); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 18px 20px; box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 10px 30px rgba(31,41,55,.06); }
+.panel h2 { margin: 0 0 12px; font-size: 15px; font-weight: 600; letter-spacing: -.1px; } .panel h2 small { font-weight: 400; color: var(--ink-3); margin-left: 8px; font-size: 12px; }
+.span12 { grid-column: span 12; } .span8 { grid-column: span 8; } .span6 { grid-column: span 6; } .span4 { grid-column: span 4; }
+@media (max-width: 1100px) { .span8, .span6, .span4 { grid-column: span 12; } }
+.muted { color: var(--ink-3); } .small { font-size: 12px; }
+.empty { padding: 26px; text-align: center; color: var(--ink-3); }
+
+/* KPIs */
+.kpis { grid-column: span 12; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.kpi { background: var(--glass-strong); border: 1px solid var(--glass-border); border-radius: 16px; padding: 14px 16px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.kpi .v { font-size: 28px; font-weight: 600; letter-spacing: -.8px; line-height: 1.1; } .kpi .v small { font-size: 14px; color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+.kpi .l { font-size: 12.5px; color: var(--ink-2); margin-top: 4px; }
+.kpi .bar { height: 5px; border-radius: 3px; background: rgba(20,30,50,.08); margin-top: 10px; overflow: hidden; } .kpi .bar i { display: block; height: 100%; background: var(--blue); border-radius: 3px; }
+
+/* linha do dia */
+.dayline { position: relative; height: 92px; margin-top: 6px; }
+.dayline .axis { position: absolute; left: 0; right: 0; top: 46px; height: 2px; background: rgba(20,30,50,.12); border-radius: 2px; }
+.dayline .hour { position: absolute; top: 56px; font-size: 11px; color: var(--ink-3); transform: translateX(-50%); }
+.dayline .hour::before { content: ""; position: absolute; left: 50%; top: -12px; width: 1px; height: 8px; background: rgba(20,30,50,.18); }
+.dayline .tick { position: absolute; top: 30px; width: 14px; height: 34px; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.dayline .tick i { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.tick.applied i { background: var(--green); } .tick.failed i { background: var(--red); } .tick.pending i { background: var(--orange); }
+.dayline .now { position: absolute; top: 24px; width: 2px; height: 46px; background: var(--blue); border-radius: 2px; transform: translateX(-50%); }
+.dayline .now::after { content: "agora"; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--blue); font-weight: 500; }
+.dayline .cap { position: absolute; right: 0; top: 0; font-size: 12px; color: var(--ink-3); }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); margin-top: 6px; } .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+
+/* barras */
+.bars { display: grid; gap: 7px; } .brow { display: grid; grid-template-columns: 180px 1fr 42px; align-items: center; gap: 10px; font-size: 13px; }
+.brow .lb { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink-2); } .brow .tr { height: 9px; border-radius: 5px; background: rgba(20,30,50,.07); overflow: hidden; }
+.brow .tr i { display: block; height: 100%; border-radius: 5px; background: var(--chart-1); } .brow .vl { text-align: right; color: var(--ink-2); }
+.days { display: grid; grid-template-columns: repeat(14, 1fr); gap: 8px; height: 150px; align-items: end; }
+.day { height: 100%; display: flex; flex-direction: column; align-items: center; } .day .cols { flex: 1; width: 100%; display: flex; gap: 3px; align-items: flex-end; justify-content: center; }
+.day .c { width: 38%; border-radius: 4px 4px 0 0; min-height: 2px; } .day .c.f { background: var(--chart-2); opacity: .6; } .day .c.a { background: var(--chart-1); }
+.day .lb { font-size: 11px; color: var(--ink-3); margin-top: 5px; }
+
+/* tabelas */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; font-weight: 500; color: var(--ink-3); padding: 8px 10px; border-bottom: 1px solid var(--hair); position: sticky; top: 0; background: rgba(255,255,255,.7); backdrop-filter: blur(8px); }
+td { padding: 9px 10px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+tr.row { cursor: pointer; } tr.row:hover td { background: rgba(255,255,255,.55); }
+.scroll { max-height: 520px; overflow: auto; border-radius: 12px; }
+.chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; background: rgba(20,30,50,.06); color: var(--ink-2); margin: 0 4px 4px 0; }
+.st { display: inline-flex; align-items: center; gap: 6px; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+.st.applied { background: var(--green-soft); color: #1f7a33; } .st.failed { background: var(--red-soft); color: #b3261e; } .st.pending_question { background: var(--orange-soft); color: #9a5b00; }
+.st.queued, .st.new { background: var(--blue-soft); color: #0b5cc7; } .st.skipped { background: rgba(20,30,50,.06); color: var(--ink-2); } .st.dry_run { background: rgba(20,30,50,.06); color: var(--ink-2); }
+.fit { display: inline-flex; align-items: center; gap: 6px; } .fit i { width: 46px; height: 5px; border-radius: 3px; background: rgba(20,30,50,.08); position: relative; overflow: hidden; } .fit i b { position: absolute; left: 0; top: 0; bottom: 0; background: var(--blue); }
+.btn { border: 1px solid var(--hair); background: rgba(255,255,255,.8); border-radius: 9px; padding: 6px 11px; cursor: pointer; font-size: 13px; color: var(--ink); }
+.btn:hover { background: #fff; } .btn.primary { background: var(--blue); color: #fff; border-color: transparent; } .btn.primary:hover { background: #0a6fe0; }
+.btn.small { padding: 3px 9px; font-size: 12px; } .btn:disabled { opacity: .5; cursor: default; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; } .filters .btn.on { background: var(--ink); color: #fff; border-color: transparent; }
+input.ans, select.ans { width: 100%; padding: 7px 10px; border-radius: 9px; border: 1px solid var(--hair); background: rgba(255,255,255,.85); }
+
+/* drawer */
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(640px, 92vw); transform: translateX(105%); transition: transform .28s cubic-bezier(.2,.8,.2,1); z-index: 20; background: var(--glass-strong); backdrop-filter: blur(34px) saturate(170%); -webkit-backdrop-filter: blur(34px) saturate(170%); border-left: 1px solid var(--glass-border); box-shadow: -20px 0 50px rgba(31,41,55,.12); display: flex; flex-direction: column; }
+.drawer.open { transform: translateX(0); } .scrim { position: fixed; inset: 0; background: rgba(20,30,50,.18); opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 15; } .scrim.on { opacity: 1; pointer-events: auto; }
+.drawer .hd { padding: 18px 22px 12px; border-bottom: 1px solid var(--hair); display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.drawer .hd h3 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -.2px; } .drawer .hd .co { color: var(--ink-2); margin-top: 2px; }
+.drawer .bd { padding: 6px 22px 30px; overflow: auto; flex: 1; }
+.sec { padding: 14px 0; border-bottom: 1px solid var(--hair); } .sec h4 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; font-size: 13px; } .kv div:nth-child(odd) { color: var(--ink-3); }
+.desc { white-space: pre-wrap; font-size: 13px; line-height: 1.55; max-height: 380px; overflow: auto; padding: 12px; background: rgba(255,255,255,.55); border-radius: 12px; border: 1px solid var(--hair); }
+.close { border: 0; background: rgba(20,30,50,.06); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 16px; }
+.tl { display: grid; gap: 8px; font-size: 12.5px; } .tl div span { color: var(--ink-3); margin-right: 8px; }
+.shot { width: 100%; border-radius: 12px; border: 1px solid var(--hair); margin-top: 6px; }
+.toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 9px 16px; border-radius: 12px; font-size: 13px; opacity: 0; transition: opacity .2s; z-index: 30; } .toast.on { opacity: 1; }
+.actionbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.actionbar input[type=number] { width: 64px; padding: 6px 8px; border-radius: 9px; border: 1px solid var(--hair); background: rgba(255,255,255,.8); }
+.log { background: rgba(28,28,30,.92); color: #e6e6e6; border-radius: 14px; padding: 14px 16px; font: 12.5px/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace; white-space: pre-wrap; max-height: 60vh; overflow: auto; }
+.task { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--hair); }
+.btn.danger { background: var(--red-soft); color: #b3261e; border-color: transparent; }
+@media (prefers-reduced-motion: reduce) { .drawer, .scrim, .toast { transition: none; } }
+:focus-visible { outline: 3px solid var(--blue-soft); outline-offset: 1px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="dot"></div><div><b>Vagas</b><span id="brand-sub">painel pessoal</span></div></div>
+    <nav class="nav" id="nav">
+      <h6>Hoje</h6>
+      <a href="#/hoje" data-view="hoje">Visão do dia</a>
+      <a href="#/pendencias" data-view="pendencias">Precisa de você <span class="n" id="n-pend">0</span></a>
+      <h6>Vagas</h6>
+      <a href="#/candidaturas" data-view="candidaturas">Candidaturas enviadas <span class="n" id="n-apps">0</span></a>
+      <a href="#/fila" data-view="fila">Fila <span class="n" id="n-queue">0</span></a>
+      <a href="#/descartadas" data-view="descartadas">Descartadas hoje <span class="n" id="n-skip">0</span></a>
+      <a href="#/falhas" data-view="falhas">Falhas e tentativas</a>
+      <h6>Aprendizado</h6>
+      <a href="#/cursos" data-view="cursos">Cursos por stack</a>
+      <a href="#/respostas" data-view="respostas">Banco de respostas</a>
+      <h6>Sistema</h6>
+      <a href="#/execucao" data-view="execucao">Execução <span class="n" id="n-run"></span></a>
+      <a href="#/ia" data-view="ia">IA e custos</a>
+      <a href="#/eventos" data-view="eventos">Eventos</a>
+      <a href="#/config" data-view="config">Configuração</a>
+    </nav>
+    <div class="foot"><div id="run-pill" class="pill off"><i></i>parado</div><div style="margin-top:8px">última busca <b id="last-disc">—</b></div></div>
+  </aside>
+  <div class="main">
+    <div class="topbar"><div><h1 id="title">Visão do dia</h1><div class="sub" id="subtitle"></div></div><div class="actions" id="topactions"></div></div>
+    <div class="content" id="content"><div class="panel span12"><div class="empty">carregando…</div></div></div>
+  </div>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true"><div class="hd"><div><h3 id="d-title"></h3><div class="co" id="d-co"></div></div><button class="close" id="d-close" aria-label="Fechar">×</button></div><div class="bd" id="d-body"></div></aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const api = async (p, opt) => { const r = await fetch(p, opt); if (!r.ok) throw new Error((await r.json().catch(()=>({}))).error || r.statusText); return r.json(); };
+const post = (p, body) => api(p, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body||{})});
+const fmtDT = s => s ? s.slice(0,16).replace('T',' ').replace(/^(\d{4})-(\d{2})-(\d{2}) /, '$3/$2 ') : '';
+const fmtD = s => s ? s.slice(8,10) + '/' + s.slice(5,7) : '';
+const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); setTimeout(()=>t.classList.remove('on'), 2200); };
+const statusLabel = {applied:'enviada', failed:'falhou', pending_question:'precisa de você', queued:'na fila', new:'nova', skipped:'descartada', dry_run:'ensaio', in_progress:'em andamento'};
+const st = s => `<span class="st ${esc(s)}">${esc(statusLabel[s]||s)}</span>`;
+const fit = v => v==null ? '' : `<span class="fit"><i><b style="width:${v}%"></b></i>${v}</span>`;
+const chips = a => (a||[]).map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+const channel = j => j.ats || (j.apply_type==='easy_apply' ? 'LinkedIn Easy Apply' : j.apply_type==='indeed_apply' ? 'Indeed Apply' : j.apply_type==='external' ? 'site externo' : j.source);
+const senior = {junior:'júnior', mid:'pleno', senior:'sênior', lead:'lead', unspecified:'não informado'};
+
+// ---------- views ----------
+const views = {};
+views.hoje = async () => {
+  const o = await api('/api/overview'); const k = o.kpi;
+  $('#title').textContent = 'Visão do dia'; $('#subtitle').textContent = `${o.now} · ${k.found_today} encontradas hoje, ${k.applied_today} enviadas`;
+  const [h0, h1] = o.active_hours; const toMin = t => +t.slice(0,2)*60 + +t.slice(3,5); const a = toMin(h0), b = toMin(h1), span = b - a;
+  const pct = t => Math.min(100, Math.max(0, (toMin(t) - a) / span * 100));
+  const hours = []; for (let h = Math.ceil(a/60); h <= Math.floor(b/60); h += 2) hours.push(`<span class="hour" style="left:${pct(String(h).padStart(2,'0')+':00')}%">${h}h</span>`);
+  const now = new Date(); const nowT = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+  const ticks = o.ticks.map(t => `<span class="tick ${t.kind}" style="left:${pct(t.t)}%" title="${esc(t.t)} · ${esc(t.title)} · ${esc(t.company)}" data-job="${esc(t.job_id)}"><i></i></span>`).join('');
+  const reasons = o.reasons.length ? bars(o.reasons, '--chart-1') : '<div class="empty">nada descartado hoje</div>';
+  const stacks = o.stacks.length ? bars(o.stacks, '--chart-1') : '<div class="empty">sem vagas classificadas hoje</div>';
+  const ats = Object.entries(o.ats).map(([k,v]) => `<tr><td>${esc(k)}</td><td>${v.applied||0}</td><td>${v.failed||0}</td><td>${v.pending_question||0}</td><td>${v.queued||0}</td><td>${v.skipped||0}</td></tr>`).join('') || '<tr><td colspan="6" class="empty">sem tentativas ainda</td></tr>';
+  const days = o.days; const mxA = Math.max(1, ...days.map(d=>o.per_day[d].applied)); const mxF = Math.max(1, ...days.map(d=>o.per_day[d].found));
+  const dayCols = days.map(d => { const p = o.per_day[d]; return `<div class="day" title="${fmtD(d)}: ${p.found} encontradas, ${p.queued} aprovadas, ${p.applied} enviadas"><div class="cols"><span class="c f" style="height:${p.found/mxF*100}%"></span><span class="c a" style="height:${p.applied/mxA*100}%"></span></div><span class="lb">${fmtD(d)}</span></div>`; }).join('');
+  $('#content').innerHTML = `
+    <section class="kpis">
+      <div class="kpi"><div class="v">${k.applied_today}<small>/ ${k.cap}</small></div><div class="l">candidaturas enviadas hoje</div><div class="bar"><i style="width:${Math.min(100,k.applied_today/k.cap*100)}%"></i></div></div>
+      <div class="kpi"><div class="v">${k.found_today}</div><div class="l">vagas encontradas hoje</div></div>
+      <div class="kpi"><div class="v">${k.queued}</div><div class="l">aguardando na fila</div></div>
+      <div class="kpi"><div class="v">${k.pending}</div><div class="l">perguntas que precisam de você</div></div>
+      <div class="kpi"><div class="v">${k.applied_total}</div><div class="l">enviadas no total</div></div>
+      <div class="kpi"><div class="v">US$ ${k.cost_today_usd.toFixed(2)}</div><div class="l">gasto com IA hoje</div></div>
+      ${k.budget && k.budget.budget_brl ? `<div class="kpi"><div class="v" style="color:${k.budget.used_pct >= 100 ? '#b91c1c' : (k.budget.used_pct >= 70 ? '#b45309' : '')}">R$ ${k.budget.spent_brl.toFixed(2)}</div><div class="l">IA no mês · teto R$ ${k.budget.budget_brl.toFixed(0)} (${k.budget.used_pct.toFixed(0)}%)</div></div>` : ''}
+    </section>
+    <section class="panel span12"><h2>Ritmo do dia <small>janela ativa ${h0} – ${h1}</small></h2>
+      <div class="dayline"><span class="cap">teto ${k.cap} por dia · LinkedIn ${k.caps.linkedin||'—'} · Indeed ${k.caps.indeed||'—'} · externas ${k.caps.external||'—'}</span><div class="axis"></div>${hours.join('')}${ticks}<span class="now" style="left:${pct(nowT)}%"></span></div>
+      <div class="legend"><span><i style="background:var(--green)"></i>enviada</span><span><i style="background:var(--red)"></i>tentativa falhou</span><span><i style="background:var(--orange)"></i>parou numa pergunta</span></div></section>
+    <section class="panel span8"><h2>Últimos 14 dias</h2><div class="legend" style="margin:0 0 10px"><span><i style="background:var(--chart-2);opacity:.6"></i>encontradas (escala própria)</span><span><i style="background:var(--chart-1)"></i>enviadas</span></div><div class="days">${dayCols}</div></section>
+    <section class="panel span4"><h2>Resultado por canal</h2><div class="scroll"><table><thead><tr><th>canal</th><th>env.</th><th>falha</th><th>pend.</th><th>fila</th><th>desc.</th></tr></thead><tbody>${ats}</tbody></table></div></section>
+    <section class="panel span6"><h2>Por que descartou hoje <small>${k.skipped_today} vagas</small></h2>${reasons}</section>
+    <section class="panel span6"><h2>Stacks mais pedidas hoje <small>nas vagas de dev</small></h2>${stacks}</section>`;
+  $('#content').querySelectorAll('.tick').forEach(t => t.addEventListener('click', () => openJob(t.dataset.job)));
+};
+const bars = (items, color) => { const mx = Math.max(1, ...items.map(i=>i[1])); return `<div class="bars">${items.map(([l,v])=>`<div class="brow" title="${esc(l)}: ${v}"><span class="lb">${esc(l)}</span><span class="tr"><i style="width:${Math.max(2,v/mx*100)}%;background:var(${color})"></i></span><span class="vl">${v}</span></div>`).join('')}</div>`; };
+
+views.candidaturas = async () => {
+  const rows = await api('/api/applications');
+  $('#title').textContent = 'Candidaturas enviadas'; $('#subtitle').textContent = `${rows.length} no total · clique numa linha para ver tudo que foi enviado`;
+  $('#content').innerHTML = `<section class="panel span12"><div class="scroll" style="max-height:none"><table><thead><tr><th>quando</th><th>vaga</th><th>empresa</th><th>canal</th><th>nível</th><th>aderência</th><th>respostas</th><th>currículo</th></tr></thead><tbody>${
+    rows.map(a => `<tr class="row" data-job="${esc(a.job_id)}"><td>${fmtDT(a.applied_at)}</td><td>${esc(a.title)}</td><td>${esc(a.company)}</td><td>${esc(a.ats||a.source)}</td><td>${esc(senior[a.classification.seniority]||'')}</td><td>${fit(a.classification.fit_score)}</td><td>${a.answers.length}</td><td>${a.resume_rel?`<a href="/file?p=${encodeURIComponent(a.resume_rel)}" target="_blank" onclick="event.stopPropagation()">PDF</a>`:''}</td></tr>`).join('') || '<tr><td colspan="8" class="empty">nenhuma candidatura enviada ainda</td></tr>'}</tbody></table></div></section>`;
+  bindRows();
+};
+
+views.fila = async () => {
+  const rows = (await api('/api/jobs?status=queued&limit=500')).sort((x,y)=>((y.classification.fit_score||0)-(x.classification.fit_score||0)));
+  $('#title').textContent = 'Fila'; $('#subtitle').textContent = `${rows.length} vagas aprovadas aguardando, da maior aderência para a menor`;
+  $('#content').innerHTML = `<section class="panel span12"><div class="scroll" style="max-height:none"><table><thead><tr><th>aderência</th><th>vaga</th><th>empresa</th><th>canal</th><th>nível</th><th>stack</th><th>encontrada</th><th></th></tr></thead><tbody>${
+    rows.map(j => `<tr class="row" data-job="${esc(j.id)}"><td>${fit(j.classification.fit_score)}</td><td>${esc(j.title)}</td><td>${esc(j.company)}</td><td>${esc(channel(j))}</td><td>${esc(senior[j.classification.seniority]||'')}</td><td>${chips((j.classification.stack||[]).slice(0,4))}</td><td>${fmtDT(j.discovered_at)}</td><td><button class="btn small" data-skip="${esc(j.id)}" onclick="event.stopPropagation()">Pular</button></td></tr>`).join('') || '<tr><td colspan="8" class="empty">fila vazia. Rode <b>vagas search</b> para descobrir vagas.</td></tr>'}</tbody></table></div></section>`;
+  bindRows(); bindSkip();
+};
+
+views.descartadas = async () => {
+  const rows = await api('/api/jobs?status=skipped&limit=800&today=1');
+  const groups = {}; rows.forEach(j => (groups[j.reason_key] = groups[j.reason_key] || []).push(j));
+  const keys = Object.keys(groups).sort((a,b)=>groups[b].length-groups[a].length); let cur = keys[0];
+  $('#title').textContent = 'Descartadas hoje'; $('#subtitle').textContent = `${rows.length} vagas fora dos critérios, agrupadas pelo motivo`;
+  const render = () => { $('#content').innerHTML = `<section class="panel span12"><div class="filters">${keys.map(k=>`<button class="btn ${k===cur?'on':''}" data-k="${esc(k)}">${esc(k)} <span class="muted">${groups[k].length}</span></button>`).join('')}</div><div class="scroll" style="max-height:none"><table><thead><tr><th>vaga</th><th>empresa</th><th>fonte</th><th>motivo</th><th></th></tr></thead><tbody>${
+    (groups[cur]||[]).map(j => `<tr class="row" data-job="${esc(j.id)}"><td>${esc(j.title)}</td><td>${esc(j.company)}</td><td>${esc(j.source)}</td><td class="muted">${esc(j.reason)}</td><td><button class="btn small" data-requeue="${esc(j.id)}" onclick="event.stopPropagation()">Recolocar na fila</button></td></tr>`).join('') || '<tr><td colspan="5" class="empty">nada aqui</td></tr>'}</tbody></table></div></section>`;
+    $('#content').querySelectorAll('.filters .btn').forEach(b => b.addEventListener('click', () => { cur = b.dataset.k; render(); })); bindRows(); bindRequeue(); };
+  render();
+};
+
+views.falhas = async () => {
+  const rows = (await api('/api/jobs?status=all&limit=800')).filter(j => j.attempts > 0 && j.status !== 'applied' && j.status !== 'skipped');
+  $('#title').textContent = 'Falhas e tentativas'; $('#subtitle').textContent = `${rows.length} vagas que a ferramenta tentou e não concluiu`;
+  $('#content').innerHTML = `<section class="panel span12"><div class="scroll" style="max-height:none"><table><thead><tr><th>status</th><th>vaga</th><th>empresa</th><th>canal</th><th>tentativas</th><th>motivo</th><th></th></tr></thead><tbody>${
+    rows.map(j => `<tr class="row" data-job="${esc(j.id)}"><td>${st(j.status)}</td><td>${esc(j.title)}</td><td>${esc(j.company)}</td><td>${esc(channel(j))}</td><td>${j.attempts}</td><td class="muted">${esc((j.reason||'').slice(0,120))}</td><td><button class="btn small" data-requeue="${esc(j.id)}" onclick="event.stopPropagation()">Tentar de novo</button> <button class="btn small" data-skip="${esc(j.id)}" onclick="event.stopPropagation()">Pular</button></td></tr>`).join('') || '<tr><td colspan="7" class="empty">nenhuma falha pendente</td></tr>'}</tbody></table></div></section>`;
+  bindRows(); bindSkip(); bindRequeue();
+};
+
+views.pendencias = async () => {
+  const rows = await api('/api/pending');
+  const notes = rows.filter(p => p.is_note), qs = rows.filter(p => !p.is_note);
+  $('#title').textContent = 'Precisa de você';
+  $('#subtitle').textContent = rows.length ? `${qs.length} pergunta(s) de formulário e ${notes.length} aviso(s). A resposta fica salva para sempre.` : 'nada pendente';
+  const acts = (p) => `<div class="row-actions" style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+      ${p.is_note ? '' : `<button class="btn primary" data-answer="${p.id}">Responder e recolocar na fila</button>`}
+      <button class="btn" data-done="${p.id}">${p.is_note ? 'Já resolvi / ocultar' : 'Ocultar (sem responder)'}</button>
+      <button class="btn danger" data-drop="${p.id}">Descartar vaga</button>
+    </div>`;
+  const card = (p) => `<div class="sec" data-q="${p.id}"><div class="muted small">${fmtDT(p.created_at)} · ${esc(p.title)} · ${esc(p.company)}</div>
+    <div style="font-weight:500;margin:4px 0 8px">${esc(p.question)}</div>
+    ${p.is_note ? '' : (p.options.length ? `<select class="ans">${p.options.map(o=>`<option ${o===p.suggested?'selected':''}>${esc(o)}</option>`).join('')}</select>` : `<input class="ans" value="${esc(p.suggested||'')}" placeholder="sua resposta">`)}
+    ${acts(p)}</div>`;
+  $('#content').innerHTML = `
+    <section class="panel span12"><h3>Perguntas de formulário</h3>${qs.length ? qs.map(card).join('') : '<div class="empty">Nenhuma pergunta pendente.</div>'}</section>
+    <section class="panel span12"><h3>Avisos e ações manuais</h3>${notes.length ? notes.map(card).join('') : '<div class="empty">Nenhum aviso.</div>'}</section>`;
+  const reload = () => { views.pendencias(); refreshCounts(); };
+  $('#content').querySelectorAll('[data-answer]').forEach(b => b.addEventListener('click', async () => {
+    const box = b.closest('.sec'); const el = box.querySelector('.ans'); const v = (el ? el.value : '').trim();
+    if (!v) { toast('Escreva uma resposta antes de enviar'); if (el) el.focus(); return; }
+    b.disabled = true; await post('/api/answer', {id: +b.dataset.answer, answer: v}); toast('Resposta salva'); reload();
+  }));
+  $('#content').querySelectorAll('[data-done]').forEach(b => b.addEventListener('click', async () => {
+    b.disabled = true; await post('/api/pending/dismiss', {id: +b.dataset.done, skip_job: false}); toast('Pendência ocultada'); reload();
+  }));
+  $('#content').querySelectorAll('[data-drop]').forEach(b => b.addEventListener('click', async () => {
+    b.disabled = true; await post('/api/pending/dismiss', {id: +b.dataset.drop, skip_job: true}); toast('Vaga descartada'); reload();
+  }));
+};
+
+views.cursos = async () => {
+  const d = await api('/api/courses'); const stacks = Object.keys(d.stacks||{}).sort();
+  const label = {todo:'a fazer', in_progress:'em andamento', done:'concluído'};
+  const total = stacks.reduce((n,s)=>n+(d.stacks[s]||[]).length, 0);
+  $('#title').textContent = 'Cursos por stack'; $('#subtitle').textContent = `${stacks.length} stacks, ${total} cursos · até 4 entram em cada currículo, escolhidos pela stack da vaga · edite em config/courses.yaml`;
+  $('#content').innerHTML = `<section class="panel span12"><div class="scroll" style="max-height:none"><table><thead><tr><th>stack</th><th>curso</th><th>plataforma</th><th>carga</th></tr></thead><tbody>${
+    stacks.flatMap(s => (d.stacks[s]||[]).map(c => `<tr><td>${esc(s)}</td><td>${esc(c.name)}${c.url?` <a href="${esc(c.url)}" target="_blank" class="small">abrir</a>`:''}</td><td class="muted">${esc(c.issuer||'')}</td><td class="muted">${c.hours?`${c.hours}h`:''}</td></tr>`)).join('')}</tbody></table></div></section>`;
+};
+
+views.respostas = async () => {
+  const s = await api('/api/settings');
+  $('#title').textContent = 'Banco de respostas'; $('#subtitle').textContent = `${s.answers.length} respostas aprendidas · as suas têm prioridade sobre as do modelo · arquivo config/answers.yaml`;
+  $('#content').innerHTML = `<section class="panel span12"><div class="scroll" style="max-height:none"><table><thead><tr><th>pergunta</th><th>resposta</th><th>origem</th></tr></thead><tbody>${s.answers.map(a=>`<tr><td>${esc(a.q)}</td><td>${esc(Array.isArray(a.a)?a.a.join(', '):a.a)}</td><td><span class="chip">${esc(a.source==='user'?'você':'modelo')}</span></td></tr>`).join('')||'<tr><td colspan="3" class="empty">vazio por enquanto</td></tr>'}</tbody></table></div></section>`;
+};
+
+views.ia = async () => {
+  const d = await api('/api/llm'); const byDay = {}; d.rows.forEach(r => { const x = byDay[r.day] = byDay[r.day] || {usd:0,p:0,c:0,calls:0}; x.usd += r.usd; x.p += r.prompt; x.c += r.completion; x.calls += r.calls; });
+  const purpose = {classify:'classificar vaga', tailor_resume:'gerar currículo', answer_questions:'responder formulário', suggest_courses:'sugerir cursos', import_profile:'importar perfil'};
+  $('#title').textContent = 'IA e custos'; $('#subtitle').textContent = 'tokens e custo estimado por dia e por uso (preços em config/dashboard.py)';
+  $('#content').innerHTML = `<section class="panel span4"><h2>Por dia</h2><table><thead><tr><th>dia</th><th>chamadas</th><th>tokens</th><th>US$</th></tr></thead><tbody>${Object.entries(byDay).map(([d,x])=>`<tr><td>${fmtD(d)}</td><td>${x.calls}</td><td>${((x.p+x.c)/1000).toFixed(0)}k</td><td>${x.usd.toFixed(2)}</td></tr>`).join('')}</tbody></table></section>
+  <section class="panel span8"><h2>Por uso</h2><div class="scroll"><table><thead><tr><th>dia</th><th>uso</th><th>modelo</th><th>chamadas</th><th>entrada</th><th>saída</th><th>US$</th></tr></thead><tbody>${d.rows.map(r=>`<tr><td>${fmtD(r.day)}</td><td>${esc(purpose[r.purpose]||r.purpose)}</td><td class="muted">${esc(r.model)}</td><td>${r.calls}</td><td>${(r.prompt/1000).toFixed(1)}k</td><td>${(r.completion/1000).toFixed(1)}k</td><td>${r.usd.toFixed(3)}</td></tr>`).join('')}</tbody></table></div></section>`;
+};
+
+views.eventos = async () => {
+  const rows = await api('/api/events?limit=300');
+  $('#title').textContent = 'Eventos'; $('#subtitle').textContent = 'o que a ferramenta fez, do mais recente para o mais antigo';
+  $('#content').innerHTML = `<section class="panel span12"><div class="scroll" style="max-height:none"><table><thead><tr><th>quando</th><th>nível</th><th>vaga</th><th>mensagem</th></tr></thead><tbody>${rows.map(e=>`<tr class="${e.job_id?'row':''}" data-job="${esc(e.job_id||'')}"><td>${fmtDT(e.at)}</td><td><span class="chip">${esc(e.level)}</span></td><td>${esc(e.title||'')}${e.company?` <span class="muted">· ${esc(e.company)}</span>`:''}</td><td class="muted">${esc(e.message)}</td></tr>`).join('')}</tbody></table></div></section>`;
+  bindRows();
+};
+
+views.config = async () => {
+  const s = await api('/api/settings');
+  const yes = v => v ? '<span class="st applied">configurado</span>' : '<span class="st failed">faltando</span>';
+  $('#title').textContent = 'Configuração'; $('#subtitle').textContent = 'o que está valendo agora (edite em config/settings.yaml e config/profile.yaml)';
+  $('#content').innerHTML = `
+    <section class="panel span6"><h2>Regras fixas</h2><div class="kv"><div>janela de vagas</div><div>últimas ${s.discovery.max_age_hours}h, só remoto</div><div>idiomas aceitos</div><div>${esc((s.filters.job_languages||[]).join(', '))}</div><div>buscas por ciclo</div><div>${s.searches_total} (${(s.discovery.sources||[]).join(', ')})</div><div>descoberta a cada</div><div>${s.limits.discovery_interval_minutes} min</div><div>janela ativa</div><div>${s.limits.active_hours.join(' – ')}</div><div>teto por dia</div><div>${s.limits.max_applications_per_day} total · ${Object.entries(s.limits.max_per_source_per_day).map(([k,v])=>`${k} ${v}`).join(' · ')}</div><div>pausa entre envios</div><div>${s.limits.delay_between_applications.join('–')} s, pausa longa a cada ${s.limits.long_break_every}</div><div>empresas bloqueadas</div><div>${chips(s.filters.company_blacklist)||'—'}</div><div>títulos bloqueados</div><div>${chips(s.filters.title_blacklist)||'—'}</div><div>hosts ignorados</div><div>${chips(s.ats.skip_hosts)||'—'}</div></div></section>
+    <section class="panel span6"><h2>Credenciais e integrações</h2><div class="kv"><div>OpenAI</div><div>${yes(s.env.OPENAI_API_KEY)} <span class="muted small">${esc(s.llm.cheap_model)} / ${esc(s.llm.smart_model)}</span></div><div>Gupy</div><div>${yes(s.env.GUPY_PASSWORD)}</div><div>cadastro em ATS</div><div>${yes(s.env.ATS_SIGNUP_PASSWORD)}</div><div>Telegram</div><div>${yes(s.env.TELEGRAM_BOT_TOKEN)}</div></div>
+      <h2 style="margin-top:18px">Currículo</h2><div class="kv"><div>template</div><div>${esc(s.resume.template)} · foto ${s.resume.photo_mm} mm</div><div>adaptação à vaga</div><div>${s.apply.min_fit_score?`aderência mínima ${s.apply.min_fit_score}`:'todas as vagas de dev'}</div><div>anos por nível</div><div>${Object.entries(s.resume.seniority_years_factor).map(([k,v])=>`${senior[k]||k} ×${v}`).join(' · ')}</div><div>cursos sugeridos</div><div>${s.courses.auto_suggest?`sim, ${s.courses.min_udemy}+ Udemy por stack`:'não'} · em andamento no PDF: ${s.courses.auto_enroll?'sim':'não'}</div></div></section>
+    <section class="panel span12"><h2>Perfil <small>${esc(s.profile.name||'')} · ${esc(s.profile.headline||'')}</small></h2><div class="kv"><div>principais</div><div>${chips(s.profile.skills?.primary)}</div><div>secundárias</div><div>${chips(s.profile.skills?.secondary)}</div><div>também com experiência</div><div>${chips(s.profile.skills?.also_experienced)}</div><div>experiências</div><div>${(s.profile.experiences||[]).map(e=>`${esc(e[1])} · ${esc(e[0])} (${esc(e[2])} – ${esc(e[3]||'atual')})`).join('<br>')}</div><div>fatos usados nos formulários</div><div class="small">${Object.entries(s.profile.facts||{}).map(([k,v])=>`<span class="chip">${esc(k)}: ${esc(v)}</span>`).join('')}</div></div></section>`;
+};
+
+// ---------- drawer ----------
+async function openJob(id) {
+  if (!id) return;
+  const j = await api('/api/job/' + encodeURIComponent(id)); const c = j.classification || {};
+  $('#d-title').textContent = j.title || id; $('#d-co').innerHTML = `${esc(j.company||'')}${j.location?` · ${esc(j.location)}`:''} &nbsp; ${st(j.status)}`;
+  const app = j.application;
+  $('#d-body').innerHTML = `
+    <div class="sec"><div class="kv"><div>links</div><div><a href="${esc(j.url)}" target="_blank">página no ${esc(j.source)}</a>${j.external_url?` · <a href="${esc(j.external_url)}" target="_blank">site da empresa</a>`:''}</div>
+      <div>canal</div><div>${esc(channel(j))}</div><div>encontrada</div><div>${fmtDT(j.discovered_at)}${j.posted_at?` · publicada ${fmtDT(j.posted_at)}`:''}</div>
+      ${j.reason?`<div>motivo</div><div>${esc(j.reason)}</div>`:''}<div>tentativas</div><div>${j.attempts}</div></div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-applyjob="${esc(j.id)}">Aplicar nesta vaga</button><button class="btn" data-dryjob="${esc(j.id)}">Ensaiar sem enviar</button><button class="btn" data-resumejob="${esc(j.id)}">Gerar currículo de novo</button><button class="btn" data-requeue="${esc(j.id)}">Recolocar na fila</button><button class="btn" data-skip="${esc(j.id)}">Pular</button></div></div>
+    <div class="sec"><h4>Como a ferramenta leu a vaga</h4><div class="kv"><div>aderência</div><div>${fit(c.fit_score)}</div><div>nível</div><div>${esc(senior[c.seniority]||c.seniority||'')}</div><div>papel</div><div>${esc(c.role_family||'')}</div><div>stack</div><div>${chips(c.stack)}</div><div>modelo</div><div>${esc(c.work_model||'')}${c.job_city?` · ${esc(c.job_city)}`:''}</div><div>contrato</div><div>${esc(c.contract_type||'')}${c.salary_offered?` · ${esc(c.salary_offered)}`:''}</div>${(c.hard_requirements||[]).length?`<div>exigências</div><div>${chips(c.hard_requirements)}</div>`:''}<div>resumo</div><div>${esc(c.reason||'')}</div></div></div>
+    ${app?`<div class="sec"><h4>O que foi enviado em ${fmtDT(app.applied_at)}</h4>${j.resume_rel?`<div style="margin-bottom:8px"><a class="btn" href="/file?p=${encodeURIComponent(j.resume_rel)}" target="_blank">Abrir currículo enviado (PDF)</a></div>`:''}<table><thead><tr><th>pergunta</th><th>resposta</th><th>origem</th></tr></thead><tbody>${(app.answers||[]).map(a=>`<tr><td>${esc(a.q)}</td><td>${esc(Array.isArray(a.a)?a.a.join(', '):a.a)}</td><td class="muted">${esc({rule:'regra',bank:'banco',llm:'modelo',user:'você'}[a.source]||a.source)}</td></tr>`).join('')||'<tr><td colspan="3" class="muted">sem perguntas além do currículo</td></tr>'}</tbody></table>${j.evidence_rel?`<img class="shot" src="/file?p=${encodeURIComponent(j.evidence_rel)}" alt="confirmação">`:''}</div>`:''}
+    ${(!app && j.resume_rel)?`<div class="sec"><h4>Currículo gerado</h4><a class="btn" href="/file?p=${encodeURIComponent(j.resume_rel)}" target="_blank">Abrir PDF</a></div>`:''}
+    ${j.pending.length?`<div class="sec"><h4>Perguntas</h4>${j.pending.map(p=>`<div class="small" style="margin-bottom:6px">${esc(p.question)} → ${p.answer?`<b>${esc(p.answer)}</b>`:'<span class="st pending_question">pendente</span>'}</div>`).join('')}</div>`:''}
+    <div class="sec"><h4>Descrição da vaga</h4><div class="desc">${esc(j.description||'sem descrição salva')}</div></div>
+    ${j.learn.length?`<div class="sec"><h4>Capturas de calibração</h4>${j.learn.map(l=>`<div class="small muted">${esc(l.ats)} · ${esc(l.step)}</div><img class="shot" src="/file?p=${encodeURIComponent(l.file)}" alt="">`).join('')}</div>`:''}
+    <div class="sec"><h4>Linha do tempo</h4><div class="tl">${j.events.map(e=>`<div><span>${fmtDT(e.at)}</span>${esc(e.message)}</div>`).join('')||'<div class="muted">sem eventos</div>'}</div></div>`;
+  $('#drawer').classList.add('open'); $('#scrim').classList.add('on'); $('#drawer').setAttribute('aria-hidden','false');
+  bindSkip($('#d-body')); bindRequeue($('#d-body'));
+  $('#d-body [data-applyjob]')?.addEventListener('click', () => { closeDrawer(); startTask('apply', {jobs: [j.id], force: true}); });
+  $('#d-body [data-dryjob]')?.addEventListener('click', () => { closeDrawer(); startTask('apply', {jobs: [j.id], force: true, dry_run: true}); });
+  $('#d-body [data-resumejob]')?.addEventListener('click', () => { closeDrawer(); startTask('resume', {job: j.id}); });
+}
+const closeDrawer = () => { $('#drawer').classList.remove('open'); $('#scrim').classList.remove('on'); $('#drawer').setAttribute('aria-hidden','true'); };
+$('#d-close').addEventListener('click', closeDrawer); $('#scrim').addEventListener('click', closeDrawer); document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+function bindRows(r=document) { r.querySelectorAll('tr.row').forEach(tr => tr.addEventListener('click', () => openJob(tr.dataset.job))); }
+function bindSkip(r=document) { r.querySelectorAll('[data-skip]').forEach(b => b.addEventListener('click', async () => { await post(`/api/job/${encodeURIComponent(b.dataset.skip)}/skip`); toast('Vaga pulada'); closeDrawer(); route(); refreshCounts(); })); }
+function bindRequeue(r=document) { r.querySelectorAll('[data-requeue]').forEach(b => b.addEventListener('click', async () => { await post(`/api/job/${encodeURIComponent(b.dataset.requeue)}/requeue`); toast('De volta à fila'); closeDrawer(); route(); refreshCounts(); })); }
+
+// ---------- ações ----------
+const kindLabel = {search:'buscar e classificar vagas', prepare:'classificar vagas novas', apply:'aplicar', run:'rodar o dia', resume:'gerar currículo'};
+async function startTask(kind, args={}) {
+  try { const r = await post('/api/task', {kind, args}); toast(`Iniciado: ${kindLabel[kind]||kind}`); refreshCounts(); location.hash = '#/execucao'; return r; }
+  catch (e) { toast(e.message); }
+}
+async function stopTask(kind) { await post('/api/stop', {kind}); toast('Parado'); refreshCounts(); route(); }
+function renderActionBar(running) {
+  const busy = Object.keys(running).some(k => ['search','prepare','apply','run','resume'].includes(k));
+  $('#topactions').innerHTML = busy
+    ? `<span class="pill on"><i></i>rodando: ${esc(Object.keys(running).join(', '))}</span> <button class="btn danger" id="a-stop">Parar</button> <a class="btn" href="#/execucao">Ver log</a>`
+    : `<div class="actionbar"><button class="btn" id="a-search">Buscar vagas agora</button><button class="btn" id="a-prepare">Classificar novas</button>
+       <span class="btn" style="display:inline-flex;gap:6px;align-items:center;padding:3px 6px 3px 10px">aplicar <input type="number" id="a-n" value="10" min="1" max="80"> <button class="btn primary small" id="a-apply">Aplicar</button></span>
+       <button class="btn" id="a-run">Rodar o dia</button></div>`;
+  $('#a-stop')?.addEventListener('click', async () => { for (const k of Object.keys(running)) if (k !== 'dashboard') await stopTask(k); });
+  $('#a-search')?.addEventListener('click', () => startTask('search'));
+  $('#a-prepare')?.addEventListener('click', () => startTask('prepare'));
+  $('#a-apply')?.addEventListener('click', () => startTask('apply', {limit: +$('#a-n').value || 10}));
+  $('#a-run')?.addEventListener('click', () => startTask('run'));
+}
+views.execucao = async () => {
+  const t = await api('/api/tasks'); const running = Object.entries(t.running).filter(([k]) => k !== 'dashboard');
+  $('#title').textContent = 'Execução'; $('#subtitle').textContent = running.length ? 'acompanhe o log ao vivo; atualiza a cada 3 s' : 'nada rodando agora. Use os botões no topo.';
+  const cur = running[0]?.[1]?.log || t.recent[0]?.name;
+  $('#content').innerHTML = `<section class="panel span12"><h2>Processos</h2>${running.map(([k,v])=>`<div class="task"><div><b>${esc(kindLabel[k]||k)}</b> <span class="muted small">pid ${v.pid} · desde ${fmtDT(v.started||'')} · <code>${esc(v.cmd||'')}</code></span></div><button class="btn danger small" data-stop="${esc(k)}">Parar</button></div>`).join('') || '<div class="empty">nenhum processo rodando</div>'}</section>
+    <section class="panel span12"><h2>Log <small id="log-name">${esc(cur||'')}</small></h2><div class="filters">${t.recent.slice(0,8).map(r=>`<button class="btn small ${r.name===cur?'on':''}" data-log="${esc(r.name)}">${esc(kindLabel[r.kind]||r.kind)} ${fmtDT(r.at)}</button>`).join('')}</div><div class="log" id="log">…</div></section>`;
+  $('#content').querySelectorAll('[data-stop]').forEach(b => b.addEventListener('click', () => stopTask(b.dataset.stop)));
+  let name = cur; const load = async () => { if (!name) { $('#log').textContent = 'sem log'; return; } const l = await api('/api/log?name=' + encodeURIComponent(name) + '&tail=300'); const el = $('#log'); const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 30; el.textContent = l.text || '(vazio)'; if (atBottom) el.scrollTop = el.scrollHeight; };
+  $('#content').querySelectorAll('[data-log]').forEach(b => b.addEventListener('click', () => { name = b.dataset.log; $('#log-name').textContent = name; $('#content').querySelectorAll('[data-log]').forEach(x=>x.classList.toggle('on', x===b)); load(); }));
+  await load(); clearInterval(window.__logTimer); window.__logTimer = setInterval(() => { if ((location.hash.replace('#/','')||'hoje') === 'execucao') load(); else clearInterval(window.__logTimer); }, 3000);
+};
+
+// ---------- routing ----------
+async function refreshCounts() {
+  try { const o = await api('/api/overview'); $('#n-pend').textContent = o.kpi.pending; $('#n-apps').textContent = o.kpi.applied_total; $('#n-queue').textContent = o.kpi.queued; $('#n-skip').textContent = o.kpi.skipped_today;
+    const run = Object.keys(o.running); const p = $('#run-pill'); p.className = 'pill ' + (run.length ? 'on' : 'off'); p.innerHTML = `<i></i>${run.length ? 'rodando: ' + run.map(k=>kindLabel[k]||k).join(', ') : 'parado'}`;
+    $('#n-run').textContent = run.length ? run.length : ''; renderActionBar(o.running);
+    $('#last-disc').textContent = o.last_discovery ? fmtDT(o.last_discovery) : 'nunca'; } catch (e) {}
+}
+async function route() {
+  const v = (location.hash.replace('#/','') || 'hoje'); document.querySelectorAll('.nav a').forEach(a => a.classList.toggle('active', a.dataset.view === v));
+  try { await (views[v] || views.hoje)(); } catch (e) { $('#content').innerHTML = `<div class="panel span12"><div class="empty">Não consegui carregar: ${esc(e.message)}</div></div>`; }
+}
+window.addEventListener('hashchange', route); route(); refreshCounts(); setInterval(() => { refreshCounts(); if ((location.hash.replace('#/','')||'hoje') === 'hoje') views.hoje(); }, 60000);
+</script>
+</body>
+</html>

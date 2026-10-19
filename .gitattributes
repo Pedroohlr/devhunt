@@ -1,0 +1,6 @@
+# Normaliza line endings: repositório sempre LF (Linux/WSL), checkout conforme o OS
+* text=auto eol=lf
+*.ttf binary
+*.png binary
+*.jpg binary
+*.pdf binary

@@ -1,0 +1,165 @@
+# ============================================================
+# PERFIL MESTRE — a única fonte de verdade sobre você.
+# O currículo de cada vaga é montado SÓ com o que está aqui (nada é inventado).
+# Preencha à mão ou gere um rascunho com: vagas profile import ~/Downloads/Profile.pdf
+# ============================================================
+
+personal:
+  full_name: "Seu Nome Completo"
+  first_name: "Seu"
+  last_name: "Nome"
+  email: "voce@email.com"
+  phone: "+55 31 99999-9999"
+  city: "Belo Horizonte"
+  state: "MG"
+  country: "Brasil"
+  linkedin: "https://www.linkedin.com/in/seu-perfil"
+  github: "https://github.com/seu-usuario"
+  portfolio: ""
+  birth_date: ""            # AAAA-MM-DD (só usado se um formulário exigir)
+  nationality: "Brasileira"
+  gender: ""                # opcional; formulários de diversidade
+  disability: "Não"         # PCD?
+
+# Título "base". O gerador adapta por vaga (ex.: "Desenvolvedor PHP Sênior").
+headline: "Desenvolvedor Full Stack"
+
+# Resumo base (2-4 linhas). O gerador reescreve por vaga mantendo os fatos.
+summary: >
+  Desenvolvedor com X anos construindo APIs e aplicações web para empresas de Y.
+  Trabalho com Node.js, PHP e React no dia a dia, com foco em código simples de manter,
+  observabilidade e entrega contínua.
+
+# Anos de experiência total (usado em perguntas "quantos anos de experiência com ...")
+years_experience_total: 8
+
+# Habilidades: o gerador só pode usar o que está aqui.
+skills:
+  # Você domina e usa/usou profissionalmente. Pode virar destaque em qualquer vaga.
+  primary:
+    - PHP
+    - Laravel
+    - Node.js
+    - TypeScript
+    - React
+    - PostgreSQL
+    - MySQL
+    - Docker
+    - AWS
+    - Git
+  # Usou em projetos, consegue trabalhar, mas não é o forte.
+  secondary:
+    - Python
+    - Vue.js
+    - Redis
+    - RabbitMQ
+    - Kubernetes
+    - GraphQL
+  # Conhece / estudou / experimentou. Pode aparecer em "Conhecimentos" se a vaga pedir, nunca como principal.
+  familiar:
+    - Go
+    - Java
+    - .NET
+    - Flutter
+
+# Anos de experiência por tecnologia (para perguntas de formulário e para o gerador não exagerar)
+skill_years:
+  PHP: 8
+  Laravel: 6
+  Node.js: 5
+  React: 5
+  TypeScript: 4
+  PostgreSQL: 6
+  AWS: 4
+  Python: 2
+
+experiences:
+  - company: "Empresa Atual Ltda"
+    title: "Desenvolvedor Full Stack Sênior"
+    start: "2021-03"
+    end: ""                 # vazio = atual
+    location: "Remoto"
+    employment_type: "PJ"
+    stack: [PHP, Laravel, Node.js, React, PostgreSQL, AWS, Docker]
+    # Escreva MUITOS bullets, concretos, com números. O gerador escolhe e reescreve os mais relevantes.
+    bullets:
+      - "Desenvolvi a API de pagamentos em Laravel que processa ~40 mil transações/dia, com integração a 3 adquirentes."
+      - "Migrei o front-end legado (jQuery) para React + TypeScript, reduzindo bugs reportados em ~30%."
+      - "Implantei pipeline CI/CD (GitHub Actions + Docker) cortando o tempo de deploy de 1h para 8 min."
+      - "Liderei tecnicamente um time de 4 devs, com code review, pareamento e planejamento de sprints."
+      - "Criei workers em Node.js consumindo filas RabbitMQ para processamento assíncrono de relatórios."
+    # Bullets alternativos para quando a vaga NÃO é de liderança (júnior/pleno)
+    bullets_ic:
+      - "Participei de code reviews e pareamento com o time, contribuindo com padrões de código."
+
+  - company: "Empresa Anterior S.A."
+    title: "Desenvolvedor Back-end Pleno"
+    start: "2018-06"
+    end: "2021-02"
+    location: "Belo Horizonte, MG"
+    employment_type: "CLT"
+    stack: [PHP, Symfony, MySQL, Redis, Vue.js]
+    bullets:
+      - "Mantive e evoluí o ERP interno em Symfony usado por 200+ usuários."
+      - "Otimizei consultas MySQL e caching com Redis, reduzindo o tempo de resposta médio de 1,8s para 400ms."
+      - "Escrevi testes automatizados (PHPUnit) elevando a cobertura de 10% para 65%."
+
+  - company: "Primeira Empresa"
+    title: "Desenvolvedor Júnior"
+    start: "2016-01"
+    end: "2018-05"
+    location: "Belo Horizonte, MG"
+    employment_type: "CLT"
+    stack: [PHP, JavaScript, MySQL]
+    bullets:
+      - "Desenvolvi sites e sistemas internos em PHP e JavaScript."
+      - "Corrigi bugs e implementei melhorias em sistema legado."
+
+education:
+  - institution: "Universidade X"
+    degree: "Bacharelado em Sistemas de Informação"
+    start: "2013"
+    end: "2017"
+    status: "concluído"     # concluído | cursando | trancado
+
+certifications:
+  - name: "AWS Certified Cloud Practitioner"
+    issuer: "Amazon"
+    year: 2023
+
+languages:
+  - name: "Português"
+    level: "Nativo"
+  - name: "Inglês"
+    level: "Avançado (leitura, escrita e conversação)"
+  - name: "Espanhol"
+    level: "Básico"
+
+# Preferências e fatos usados para responder formulários. Adicione livremente chave: valor.
+facts:
+  salary_expectation_clt: "R$ 12.000"
+  salary_expectation_pj: "R$ 15.000"
+  salary_expectation_junior_clt: "R$ 5.000"
+  salary_expectation_mid_clt: "R$ 8.000"
+  availability: "Imediata"
+  notice_period: "Sem aviso prévio (PJ)"
+  work_models_accepted: "Remoto, híbrido ou presencial em Belo Horizonte"
+  willing_to_relocate: "Não"
+  has_cnpj: "Sim (MEI/ME)"
+  accepts_pj: "Sim"
+  accepts_clt: "Sim"
+  english_level: "Avançado"
+  has_drivers_license: "Sim, categoria B"
+  travel_availability: "Sim, esporadicamente"
+  how_did_you_hear: "LinkedIn"
+  authorized_to_work_brazil: "Sim"
+  needs_visa_sponsorship: "Não"
+  veteran: "Não"
+  ethnicity: "Prefiro não responder"
+
+# Como você escreve (o gerador imita). Quanto mais específico, menos "cara de IA".
+voice:
+  notes: >
+    Frases curtas e diretas. Verbos no passado na primeira pessoa implícita ("Desenvolvi", "Migrei").
+    Sem adjetivos vazios ("apaixonado", "dinâmico", "proativo"). Números concretos quando existirem.
+    Português do Brasil coloquial-profissional; em inglês, tom simples e sem jargão corporativo.

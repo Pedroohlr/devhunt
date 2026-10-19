@@ -1,0 +1,263 @@
+# ============================================================
+# Configuração geral do auto-aplicador
+# ============================================================
+
+# ============================================================
+# DESCOBERTA
+# REGRAS FIXAS (também estão em código, não dá pra desligar aqui): só últimas 24h e só remoto.
+# LinkedIn: endpoint público (sem usar sua conta) com geoId do Brasil; sessão logada só para candidatar.
+# Indeed: no navegador (Cloudflare). Gupy/InHire/Solides/...: só quando a vaga do LinkedIn/Indeed redireciona pra lá.
+# ============================================================
+discovery:
+  sources: [linkedin, indeed]      # REGRA: Gupy/InHire/Solides etc. só como destino externo, nunca como fonte
+  location: "Brasil"
+  linkedin_geo_id: "106057199"     # Brasil
+  linkedin_mode: guest             # guest | session
+  max_pages_per_search: 3          # 10 vagas/página no endpoint público do LinkedIn
+  max_age_hours: 24                # teto fixo; valores maiores são ignorados
+
+  # Termos genéricos (rodam em todas as fontes)
+  base_queries:
+    - desenvolvedor
+    - pessoa desenvolvedora
+    - programador
+    - engenheiro de software
+    - tech lead
+    - arquiteto de software
+    - desenvolvedor full stack
+    - desenvolvedor backend
+    - desenvolvedor frontend
+    - desenvolvedor mobile
+
+  # O LinkedIn personaliza "desenvolvedor" pelo seu perfil; por isso uma busca por linguagem/stack.
+  # Template: "desenvolvedor {stack}". Roda nas fontes de stack_queries_sources.
+  stack_template: "desenvolvedor {stack}"
+  stack_queries_sources: [linkedin]
+  stack_queries:
+    - php
+    - laravel
+    - symfony
+    - "c#"
+    - ".net"
+    - java
+    - spring
+    - kotlin
+    - python
+    - django
+    - flask
+    - fastapi
+    - rust
+    - go
+    - golang
+    - node
+    - nestjs
+    - react
+    - next.js
+    - angular
+    - vue
+    - nuxt
+    - typescript
+    - javascript
+    - ruby
+    - ruby on rails
+    - swift
+    - ios
+    - android
+    - flutter
+    - react native
+    - elixir
+    - scala
+    - "c++"
+    - delphi
+    - salesforce
+    - wordpress
+    - magento
+    - vtex
+    - shopify
+    - dart
+    - cobol
+    - abap
+    - pl/sql
+    - outsystems
+    - low-code
+    - power platform
+    - unity
+    - sql
+    - devops
+    - dados
+
+# Buscas extras fora da matriz (também forçadas para 24h + remoto)
+searches: []
+
+filters:
+  # Aplicamos para QUALQUER linguagem. O que decide é se o papel é de desenvolvimento.
+  # O classificador (LLM) recebe estas listas como guia.
+  apply_roles:
+    - desenvolvedor / developer (backend, frontend, fullstack, mobile, web)
+    - programador / programmer
+    - engenheiro de software / software engineer
+    - tech lead / líder técnico
+    - arquiteto de software / solutions architect (hands-on)
+    - engenheiro de dados / data engineer (se envolver código)
+    - devops / SRE / platform engineer (se envolver código)
+  exclude_roles:
+    - suporte técnico / help desk / N1
+    - analista de testes manuais sem programação
+    - designer / UX / product manager / scrum master
+    - vendas / comercial / marketing
+    - professor / instrutor / mentor
+    - estágio (remover daqui se quiser aplicar para estágios)
+  # Palavras no título que descartam a vaga antes mesmo do LLM (barato)
+  title_blacklist:
+    - "suporte"
+    - "help desk"
+    - "vendedor"
+    - "professor"
+    - "estagi"       # estágio / estagiário
+    - "sap abap"     # exemplo; remova se quiser
+  # ATS/portais que não queremos usar (bloqueiam automação ou exigem conta que não vale a pena)
+  host_blacklist:
+    - talynx.com.br
+    - jobdiva.com
+    - jobbol.com.br
+    - accenture.wd103.myworkdayjobs.com
+    - g4f.portaldetalentos.senior.com.br
+    - catho.com.br
+  # Empresas para as quais você não quer aplicar (compara por trecho do nome).
+  # Exemplo: consultorias que publicam a mesma vaga dezenas de vezes por dia. Ajuste ao seu gosto.
+  company_blacklist:
+    - "BairesDev"
+  # Só vagas com descrição nestes idiomas. Vagas que EXIGEM outro idioma são puladas.
+  # Mesmo com inglês avançado, vaga que exige inglês é descartada (mude aqui se quiser aplicar).
+  job_languages: ["pt-BR"]
+  # Exigências que fazem descartar a vaga
+  reject_if:
+    requires_relocation: true         # exige mudar de cidade
+    requires_onsite_outside_my_city: true
+    requires_language_i_dont_have: true
+
+limits:
+  max_applications_per_day: 200       # teto diário total (LinkedIn+Indeed+externas)
+  max_per_source_per_day:
+    linkedin: 50
+    indeed: 40
+    external: 160
+  # Pausa entre candidaturas (segundos), sorteada com distribuição normal truncada.
+  # Easy Apply e Indeed Apply: ritmo humano (a plataforma vê o padrão de envio).
+  delay_between_applications: [45, 150]
+  # Candidatura em site externo (Gupy, InHire, site da empresa): cada envio é num site diferente.
+  delay_between_applications_external: [15, 45]
+  # Tentativa que NÃO enviou nada (login, conta, anúncio expirado, formulário travado).
+  delay_after_failure: [3, 10]
+  # A cada N ENVIOS pelo Easy Apply/Indeed Apply, pausa longa (minutos)
+  long_break_every: 10
+  long_break_minutes: [6, 15]
+  # Janela ativa (hora local). Fora dela o daemon só espera.
+  active_hours: ["08:00", "23:30"]
+  # Intervalo entre ciclos de descoberta de vagas (minutos) no modo `vagas run`
+  discovery_interval_minutes: 120
+  # Quantas etapas de formulário no máximo antes de desistir de uma candidatura
+  max_form_steps: 20                  # CI&T no Easy Apply passa de 12 etapas (chegou no 'Revisar' na 11ª); loop é pego por 'preso na mesma etapa'
+  # Timeout (minutos) esperando você resolver login/captcha na janela do navegador
+  human_checkpoint_timeout_minutes: 15
+  # Sem ninguém no teclado (leva do painel, sem terminal) só espera isto e pula a vaga.
+  # Muito checkpoint (captcha do Indeed) se resolve sozinho em poucos segundos.
+  checkpoint_auto_seconds: 45
+
+browser:
+  # persistent: Chrome/Chromium com perfil próprio dentro do WSL (janela via WSLg)
+  # cdp: conecta no Chrome do Windows aberto com --remote-debugging-port
+  mode: persistent
+  user_data_dir: data/profile
+  # "chrome" usa o Google Chrome instalado (menos detectável). Vazio = Chromium do Playwright.
+  channel: "chrome"
+  # Caminho do Chrome. Deixe VAZIO para usar o Chrome do sistema (channel acima) ou o Chromium.
+  # Só preencha se você extraiu o Chrome sem root, como no README > Navegador.
+  executable_path: ""
+  cdp_url: "http://localhost:9222"
+  locale: pt-BR
+  timezone: America/Sao_Paulo
+  headless: false
+  slow_mo_ms: 0
+
+llm:
+  cheap_model: claude-haiku-4-5  # classificação, respostas de formulário
+  smart_model: claude-sonnet-5   # currículo adaptado
+  # Abaixo desta confiança a resposta do LLM vira pergunta para você (modo interativo) ou pendência
+  min_answer_confidence: 0.6
+  # Perguntas destes temas SEMPRE exigem resposta sua (uma vez; depois fica no banco de respostas)
+  always_ask_topics:
+    - documento (CPF, RG, passaporte)
+    - endereço completo (rua, CEP)
+    - dados bancários
+  # Teto de gasto com IA no mês (R$). 0 desliga o freio.
+  # Ao chegar perto do teto só continua o que é essencial para terminar uma candidatura já aberta
+  # (respostas de formulário); currículo e classificação passam a usar só o caminho determinístico.
+  monthly_budget_brl: 50
+  usd_brl: 5.5
+  # Opcional: contar o mês a partir de uma data (útil se você já gastou parte do crédito).
+  # budget_since: "2026-01-15"
+  # Opcional: teto diferente para um mês específico.
+  budget_overrides_brl: {}
+  # Confiança mínima do classificador de regras para não chamar a IA
+  rules_min_confidence: 0.75
+
+resume:
+  # pt-BR ou en; "auto" segue o idioma da descrição da vaga
+  language: pt-BR
+  # Ajusta o currículo para o nível da vaga (júnior/pleno/sênior). Nunca inventa; só reordena/omite/reescreve.
+  adapt_seniority: true
+  max_experiences_junior: 4     # júnior: só as 4 mais relevantes
+  max_experiences_mid: 99       # pleno/sênior: TODAS as experiências (pode ter 2 páginas)
+  max_experiences_senior: 99
+  output_dir: data/resumes
+  template: modern              # modern | classic
+  accent_color: "#1f3a93"       # cor de destaque (títulos, cargo, chips)
+  photo_mm: 38                  # foto no cabeçalho, em mm (0 = sem foto)
+  # hide = omite a seção de cursos quando nenhum casa com a vaga; generic = mostra os marcados "geral"
+  certifications_when_none: hide
+  # Nome do PDF que os sites recebem (`vagas setup` preenche com o seu nome).
+  # O arquivo interno, por vaga, continua em data/resumes.
+  # Aceita {first_name}, {last_name} e {full_name} — sai do seu config/profile.yaml.
+  upload_filename: "Curriculo - {first_name} {last_name}.pdf"
+
+apply:
+  dry_run: false                # true = preenche tudo, tira screenshot e NÃO envia (bom para calibrar)
+  pause_before_submit: false    # no modo --interactive, pergunta antes de cada envio
+  min_fit_score: 70             # só aplica em vagas com aderência >= 70
+  apply_once_per_company_days: 0
+  max_attempts: 2
+
+courses:
+  auto_suggest: true            # sugere >= min_udemy cursos da Udemy por stack nova (cache em config/courses.yaml, sem repesquisar)
+  min_udemy: 3
+  auto_enroll: true             # true = cursos sugeridos da stack da vaga entram no PDF como "em andamento". Ligue só se for se matricular.
+  max_in_progress_on_resume: 3
+
+ats:
+  # Hosts para os quais nem tentamos. Adicione conforme aprender.
+  skip_hosts:
+    - api.whatsapp.com     # "candidatura" por WhatsApp: sem formulário; fica como skipped para você mandar mensagem à mão
+    - wa.me
+    - whatsapp.com
+  # Hosts onde o applier genérico costuma funcionar; só documentação
+  known_hosts:
+    gupy.io: gupy
+    inhire.app: inhire
+    inhire.com.br: inhire
+    greenhouse.io: greenhouse
+    lever.co: lever
+    workable.com: workable
+    jobs.ashbyhq.com: ashby
+    smartrecruiters.com: smartrecruiters
+    breezy.hr: breezy
+    solides.com.br: solides
+    vagas.com.br: vagas_com
+    recrut.ai: recrutai
+    recrutei.com.br: recrutei
+    abler.com.br: abler
+    pandape.com.br: pandape
+    coodesh.com: coodesh
+    geekhunter.com.br: geekhunter
+    revelo.com.br: revelo
+    programathor.com.br: programathor

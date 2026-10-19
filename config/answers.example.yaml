@@ -1,0 +1,18 @@
+# Banco de respostas aprendidas. A ferramenta acrescenta aqui; você pode editar à vontade.
+# Formato: lista de {q: pergunta normalizada, a: resposta, source: user|llm, topic: opcional}
+# Matching é fuzzy, então pequenas variações da pergunta reaproveitam a mesma resposta.
+answers:
+  - q: "você aceita trabalhar em regime pj?"
+    a: "Sim"
+    source: user
+  - q: "qual sua pretensão salarial?"
+    a: "R$ 12.000 (CLT) ou R$ 15.000 (PJ), negociável conforme o pacote"
+    source: user
+    topic: pretensão salarial
+  - q: "disponibilidade para início"
+    a: "Imediata"
+    source: user
+    topic: disponibilidade de início
+  - q: "possui disponibilidade para trabalhar presencialmente?"
+    a: "Sim, em Belo Horizonte ou modelo híbrido/remoto"
+    source: user

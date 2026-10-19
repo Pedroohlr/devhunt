@@ -1,0 +1,31 @@
+[project]
+name = "vagas"
+version = "0.1.0"
+description = "Auto-aplicador pessoal de vagas (LinkedIn, Indeed, Gupy, InHire, ...) com currículo adaptado por vaga."
+requires-python = ">=3.12"
+dependencies = [
+  "playwright>=1.50",
+  "anthropic>=1.0",
+  "typer>=0.12",
+  "pydantic>=2.6",
+  "pyyaml>=6",
+  "jinja2>=3.1",
+  "rapidfuzz>=3.6",
+  "pypdf>=4",
+  "rich>=13",
+  "python-dotenv>=1",
+]
+
+[project.scripts]
+vagas = "vagas.cli:app"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"vagas.resume" = ["templates/*.html", "templates/fonts/*.ttf"]
+"vagas" = ["dashboard_static/*.html"]

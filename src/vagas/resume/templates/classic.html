@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="{{ resume.language }}">
+<head>
+<meta charset="utf-8">
+<title>{{ personal.full_name }} - {{ resume.headline }}</title>
+<style>
+  @page { size: A4; margin: 14mm 15mm 14mm 15mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+    font-size: 10.3pt; line-height: 1.38; color: #1d1d1f;
+  }
+  header { border-bottom: 1.5px solid #1d1d1f; padding-bottom: 6pt; margin-bottom: 9pt; display: flex; justify-content: space-between; align-items: center; gap: 14pt; }
+  header .id { flex: 1; min-width: 0; }
+  header img.photo { width: 26mm; height: 26mm; object-fit: cover; border-radius: 4pt; flex: none; }
+  h1 { font-size: 19pt; margin: 0 0 1pt 0; letter-spacing: 0.2pt; font-weight: 700; }
+  .headline { font-size: 11.5pt; margin: 0 0 4pt 0; color: #333; }
+  .contact { font-size: 9.2pt; color: #444; }
+  .contact span + span::before { content: "  ·  "; color: #999; }
+  h2 {
+    font-size: 10.3pt; text-transform: uppercase; letter-spacing: 0.9pt; margin: 10pt 0 4pt 0;
+    padding-bottom: 2pt; border-bottom: 0.6pt solid #b9b9b9; color: #222;
+  }
+  p { margin: 0 0 4pt 0; }
+  .skills { margin: 0; }
+  .skills b { font-weight: 600; }
+  .exp { margin-bottom: 7pt; page-break-inside: avoid; }
+  .exp .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .exp .title { font-weight: 700; }
+  .exp .company { color: #333; }
+  .exp .period { color: #555; font-size: 9.3pt; white-space: nowrap; margin-left: 8pt; }
+  ul { margin: 2pt 0 0 0; padding-left: 14pt; }
+  li { margin: 0 0 1.6pt 0; }
+  .edu { display: flex; justify-content: space-between; margin-bottom: 3pt; }
+  .small { font-size: 9.3pt; color: #444; }
+  .two { display: flex; gap: 24pt; }
+  .two > div { flex: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="id">
+  <h1>{{ personal.full_name }}</h1>
+  <div class="headline">{{ resume.headline }}</div>
+  <div class="contact">
+    {% if personal.city %}<span>{{ personal.city }}{% if personal.state %}, {{ personal.state }}{% endif %}</span>{% endif %}
+    {% if personal.phone %}<span>{{ personal.phone }}</span>{% endif %}
+    {% if personal.email %}<span>{{ personal.email }}</span>{% endif %}
+    {% if personal.linkedin %}<span>{{ personal.linkedin | replace("https://", "") | replace("www.", "") }}</span>{% endif %}
+    {% if personal.github %}<span>{{ personal.github | replace("https://", "") | replace("www.", "") }}</span>{% endif %}
+    {% if personal.portfolio and personal.portfolio != personal.github %}<span>{{ personal.portfolio | replace("https://", "") }}</span>{% endif %}
+  </div>
+  </div>
+  {% if photo_data %}<img class="photo" src="{{ photo_data }}" alt="">{% endif %}
+</header>
+
+{% set t = resume.section_titles or {} %}
+
+{% if resume.summary %}
+<h2>{{ t.summary or "Resumo" }}</h2>
+<p>{{ resume.summary }}</p>
+{% endif %}
+
+{% if resume.skills and resume.skills.main %}
+<h2>{{ t.skills or "Competências" }}</h2>
+<p class="skills"><b>{{ resume.skills.main | join(" · ") }}</b></p>
+{% if resume.skills.other %}
+<p class="skills small">{{ t.other_skills or "Outros conhecimentos" }}: {{ resume.skills.other | join(", ") }}</p>
+{% endif %}
+{% endif %}
+
+{% if resume.experiences %}
+<h2>{{ t.experience or "Experiência" }}</h2>
+{% for e in resume.experiences %}
+<div class="exp">
+  <div class="row">
+    <div><span class="title">{{ e.title }}</span> — <span class="company">{{ e.company }}</span>{% if e.location %} <span class="small">· {{ e.location }}</span>{% endif %}</div>
+    <div class="period">{{ e.start | period }} – {{ e.end | period(current=resume.language) }}</div>
+  </div>
+  {% if e.bullets %}
+  <ul>
+    {% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="two">
+  <div>
+  {% if resume.education %}
+  <h2>{{ t.education or "Formação" }}</h2>
+  {% for ed in resume.education %}
+  <div class="edu"><div><b>{{ ed.degree }}</b><br><span class="small">{{ ed.institution }}</span></div><div class="small">{{ ed.period }}</div></div>
+  {% endfor %}
+  {% endif %}
+
+  {% if resume.certifications %}
+  <h2>{{ t.certifications or "Certificações" }}</h2>
+  {% for c in resume.certifications %}
+  <div class="edu"><div>{{ c.name }}{% if c.issuer %} <span class="small">· {{ c.issuer }}</span>{% endif %}</div><div class="small">{{ c.year or "" }}</div></div>
+  {% endfor %}
+  {% endif %}
+  </div>
+  <div>
+  {% if resume.languages %}
+  <h2>{{ t.languages or "Idiomas" }}</h2>
+  {% for l in resume.languages %}
+  <div class="edu"><div>{{ l.name }}</div><div class="small">{{ l.level }}</div></div>
+  {% endfor %}
+  {% endif %}
+  </div>
+</div>
+</body>
+</html>

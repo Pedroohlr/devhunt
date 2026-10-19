@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="{{ resume.language }}">
+<head>
+<meta charset="utf-8">
+<title>{{ personal.full_name }} - {{ resume.headline }}</title>
+<style>
+  @font-face { font-family: "Inter"; src: url("{{ fonts_dir }}/Inter-400.ttf") format("truetype"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("{{ fonts_dir }}/Inter-500.ttf") format("truetype"); font-weight: 500; }
+  @font-face { font-family: "Inter"; src: url("{{ fonts_dir }}/Inter-600.ttf") format("truetype"); font-weight: 600; }
+  @font-face { font-family: "Inter"; src: url("{{ fonts_dir }}/Inter-700.ttf") format("truetype"); font-weight: 700; }
+  @page { size: A4; margin: 12mm 13mm 13mm 13mm; }
+  :root {
+    --accent: {{ accent }};
+    --accent-soft: {{ accent_soft }};
+    --ink: #1b1f27; --muted: #5b6472; --line: #dfe3e8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: Inter, "Helvetica Neue", Arial, "Liberation Sans", sans-serif; font-size: 9.8pt; line-height: 1.42; color: var(--ink); }
+
+  header { display: flex; gap: 18pt; align-items: center; padding-bottom: 10pt; border-bottom: 2pt solid var(--accent); margin-bottom: 8pt; }
+  .photo { width: {{ photo_mm }}mm; height: {{ photo_mm }}mm; object-fit: cover; border-radius: 50%; border: 3pt solid var(--accent-soft); flex: none; }
+  .id { flex: 1; min-width: 0; }
+  h1 { font-size: 24pt; font-weight: 700; letter-spacing: -0.4pt; margin: 0; line-height: 1.1; }
+  .headline { font-size: 12pt; color: var(--accent); font-weight: 600; margin: 3pt 0 7pt; }
+  .contact { display: flex; flex-wrap: wrap; gap: 3pt 12pt; font-size: 8.8pt; color: var(--muted); }
+  .contact span { display: inline-flex; align-items: center; gap: 4pt; white-space: nowrap; }
+  .contact svg { width: 9.5pt; height: 9.5pt; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  h2 { font-size: 9.4pt; text-transform: uppercase; letter-spacing: 1.3pt; color: var(--accent); font-weight: 700; margin: 11pt 0 5pt; display: flex; align-items: center; gap: 8pt; }
+  h2::after { content: ""; flex: 1; height: 0.7pt; background: var(--line); }
+  p { margin: 0 0 4pt; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 4pt; }
+  .chip { background: var(--accent-soft); color: var(--accent); border-radius: 4pt; padding: 1.5pt 7pt; font-size: 8.8pt; font-weight: 600; }
+  .other { margin-top: 5pt; font-size: 8.8pt; color: var(--muted); }
+  .other b { color: var(--ink); font-weight: 600; }
+
+  .exp { margin-bottom: 8pt; page-break-inside: avoid; }
+  .exp .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; }
+  .exp .title { font-weight: 700; font-size: 10.4pt; }
+  .exp .company { color: var(--accent); font-weight: 600; }
+  .exp .loc { color: var(--muted); font-size: 8.8pt; font-weight: 400; }
+  .period { font-size: 8.3pt; color: var(--accent); background: var(--accent-soft); border-radius: 10pt; padding: 1pt 8pt; white-space: nowrap; font-weight: 600; }
+  ul { margin: 3pt 0 0; padding-left: 12pt; }
+  li { margin: 0 0 1.8pt; padding-left: 2pt; }
+  li::marker { color: var(--accent); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22pt; }
+  .item { display: flex; justify-content: space-between; gap: 8pt; margin-bottom: 3pt; }
+  .item b { font-weight: 600; }
+  .small { font-size: 8.8pt; color: var(--muted); }
+</style>
+</head>
+<body>
+{% set t = resume.section_titles or {} %}
+{% set ico = {
+  'pin': '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  'phone': '<svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>',
+  'mail': '<svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+  'in': '<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>',
+  'gh': '<svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>',
+  'web': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+} %}
+<header>
+  {% if photo_data %}<img class="photo" src="{{ photo_data }}" alt="">{% endif %}
+  <div class="id">
+    <h1>{{ personal.full_name }}</h1>
+    <div class="headline">{{ resume.headline }}</div>
+    <div class="contact">
+      {% if personal.city %}<span>{{ ico.pin | safe }}{{ personal.city }}{% if personal.state %}, {{ personal.state }}{% endif %}</span>{% endif %}
+      {% if personal.phone %}<span>{{ ico.phone | safe }}{{ personal.phone }}</span>{% endif %}
+      {% if personal.email %}<span>{{ ico.mail | safe }}{{ personal.email }}</span>{% endif %}
+      {% if personal.linkedin %}<span>{{ ico.in | safe }}{{ personal.linkedin | replace("https://", "") | replace("www.", "") }}</span>{% endif %}
+      {% if personal.github %}<span>{{ ico.gh | safe }}{{ personal.github | replace("https://", "") | replace("www.", "") }}</span>{% endif %}
+      {% if personal.portfolio and personal.portfolio != personal.github %}<span>{{ ico.web | safe }}{{ personal.portfolio | replace("https://", "") }}</span>{% endif %}
+    </div>
+  </div>
+</header>
+
+{% if resume.summary %}
+<h2>{{ t.summary or "Resumo" }}</h2>
+<p>{{ resume.summary }}</p>
+{% endif %}
+
+{% if resume.skills and resume.skills.main %}
+<h2>{{ t.skills or "Competências" }}</h2>
+<div class="chips">{% for s in resume.skills.main %}<span class="chip">{{ s }}</span>{% endfor %}</div>
+{% if resume.skills.other %}
+<div class="other"><b>{{ t.other_skills or "Outros conhecimentos" }}:</b> {{ resume.skills.other | join(" · ") }}</div>
+{% endif %}
+{% endif %}
+
+{% if resume.experiences %}
+<h2>{{ t.experience or "Experiência" }}</h2>
+{% for e in resume.experiences %}
+<div class="exp">
+  <div class="row">
+    <div><span class="title">{{ e.title }}</span> · <span class="company">{{ e.company }}</span>{% if e.location %} <span class="loc">· {{ e.location }}</span>{% endif %}</div>
+    <div class="period">{{ e.start | period }} – {{ e.end | period(current=resume.language) }}</div>
+  </div>
+  {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="grid">
+  <div>
+    {% if resume.education %}
+    <h2>{{ t.education or "Formação" }}</h2>
+    {% for ed in resume.education %}
+    <div class="item"><div><b>{{ ed.degree }}</b><br><span class="small">{{ ed.institution }}</span></div><div class="small">{{ ed.period }}</div></div>
+    {% endfor %}
+    {% endif %}
+    {% if resume.certifications %}
+    <h2>{{ t.certifications or "Certificações" }}</h2>
+    {% for c in resume.certifications %}
+    <div class="item"><div>{{ c.name }}{% if c.issuer %} <span class="small">· {{ c.issuer }}</span>{% endif %}</div><div class="small">{{ c.year or "" }}</div></div>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <div>
+    {% if resume.languages %}
+    <h2>{{ t.languages or "Idiomas" }}</h2>
+    {% for l in resume.languages %}
+    <div class="item"><div><b>{{ l.name }}</b></div><div class="small">{{ l.level }}</div></div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>

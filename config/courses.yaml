@@ -1,0 +1,1946 @@
+# Cursos por stack. status: todo | in_progress | done (+ year). done entra como concluído; in_progress como 'em andamento'.
+stacks:
+  laravel:
+  - name: Laravel 8 do básico ao avançado
+    issuer: Udemy
+    hours: 20
+    url: ''
+    status: todo
+    year: ''
+  - name: 'Laravel: Construindo uma aplicação completa'
+    issuer: Alura
+    hours: 15
+    url: https://www.alura.com.br/curso-online-laravel-construindo-aplicacao
+    year: ''
+    status: todo
+  - name: Documentação oficial do Laravel
+    issuer: Laravel Official Documentation
+    hours: 0
+    url: https://laravel.com/docs
+    year: ''
+    status: todo
+  - name: Laravel 8 - Curso Completo do Básico ao Avançado
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/laravel-8-curso-completo-do-basico-ao-avancado/
+    status: todo
+    year: ''
+  - name: Laravel para Iniciantes - Do Zero ao Deploy
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/laravel-para-iniciantes-do-zero-ao-deploy/
+    status: todo
+    year: ''
+  - name: 'Laravel: Construindo uma API RESTful'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/laravel-construindo-uma-api-restful/
+    status: todo
+    year: ''
+  - name: 'Laravel: Construindo Aplicações Web com PHP'
+    issuer: Alura
+    hours: 25
+    url: https://www.alura.com.br/curso-online-laravel-php
+    status: todo
+    year: ''
+  symfony:
+  - name: 'Symfony 5: Crie um site com PHP e Symfony 5'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/symfony-5-crie-um-site-com-php-e-symfony-5/
+    status: todo
+    year: ''
+  - name: Curso Completo de Symfony 4 - Crie Aplicações Web Profissionais
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/curso-completo-de-symfony-4/
+    status: todo
+    year: ''
+  - name: Symfony 4 - Curso Completo para Iniciantes
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/symfony-4-curso-completo-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Desenvolvimento Web com Symfony
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-desenvolvimento-web-symfony
+    status: todo
+    year: ''
+  c#:
+  - name: C# Completo Programação Orientada a Objetos + Projetos
+    issuer: Udemy
+    hours: 35
+    url: https://www.udemy.com/course/csharp-completo-programacao-orientada-a-objetos-projetos/
+    status: todo
+    year: ''
+  - name: Programação C# para Iniciantes
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/programacao-csharp-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Formação C# - Alura
+    issuer: Alura
+    hours: 40
+    url: https://www.alura.com.br/formacao-csharp
+    status: todo
+    year: ''
+  - name: C# Básico ao Avançado - Curso Completo
+    issuer: Udemy
+    hours: 35
+    url: https://www.udemy.com/course/csharp-basico-ao-avancado-curso-completo/
+    status: todo
+    year: ''
+  .net:
+  - name: Curso Completo de ASP.NET Core MVC - C# e Entity Framework
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/curso-completo-de-aspnet-core-mvc-csharp-e-entity-framework/
+    status: todo
+    year: ''
+  - name: Desenvolvimento Web com ASP.NET Core MVC
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/desenvolvimento-web-com-aspnet-core-mvc/
+    status: todo
+    year: ''
+  - name: Formação .NET Developer
+    issuer: Alura
+    hours: 60
+    url: https://www.alura.com.br/formacao-dotnet-developer
+    status: todo
+    year: ''
+  - name: '.NET Core: Desenvolva uma API RESTful do zero'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/dotnet-core-api-restful/
+    status: todo
+    year: ''
+  java:
+  - name: Java para Iniciantes - Curso Completo
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/java-para-iniciantes-curso-completo/
+    status: todo
+    year: ''
+  - name: 'Java 8: Programação Funcional e Lambda'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/java-8-programacao-funcional-e-lambda/
+    status: todo
+    year: ''
+  - name: Java Completo 2023 Programação Orientada a Objetos +Projetos
+    issuer: Udemy
+    hours: 65
+    url: https://www.udemy.com/course/java-curso-completo/
+    status: todo
+    year: ''
+  - name: Formação Java Developer
+    issuer: Alura
+    hours: 120
+    url: https://www.alura.com.br/formacao-java
+    status: todo
+    year: ''
+  spring:
+  - name: 'Spring Framework 5: Desenvolvimento de APIs REST com Spring Boot'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/spring-framework-5-desenvolvimento-de-apis-rest-com-spring-boot/
+    status: todo
+    year: ''
+  - name: 'Spring Boot e Spring Framework: Desenvolvimento de APIs REST'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/spring-boot-e-spring-framework-desenvolvimento-de-apis-rest/
+    status: todo
+    year: ''
+  - name: 'Spring Framework: Fundamentos para Iniciantes'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/spring-framework-fundamentos-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Spring Framework: Desenvolvimento Web com Spring MVC'
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-spring-framework-web
+    status: todo
+    year: ''
+  kotlin:
+  - name: 'Kotlin para Android: Desenvolva Aplicativos Android com Kotlin'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/kotlin-android/
+    status: todo
+    year: ''
+  - name: Kotlin Essencial
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/kotlin-essencial/
+    status: todo
+    year: ''
+  - name: 'Kotlin: Fundamentos'
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-kotlin-fundamentos
+    status: todo
+    year: ''
+  - name: 'Kotlin para Iniciantes: Aprenda a Programar em Kotlin'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/kotlin-para-iniciantes-aprenda-a-programar-em-kotlin/
+    status: todo
+    year: ''
+  - name: 'Kotlin: Fundamentos da Linguagem'
+    issuer: Alura
+    hours: 15
+    url: https://www.alura.com.br/curso-online-kotlin-fundamentos
+    status: todo
+    year: ''
+  python:
+  - name: Python para Iniciantes - Curso Completo
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/python-para-iniciantes-curso-completo/
+    status: todo
+    year: ''
+  - name: Automatize tarefas maçantes com Python
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/automatize-tarefas-macantes-com-python/
+    status: todo
+    year: ''
+  - name: 'Python 3: Fundamentos para Desenvolvimento'
+    issuer: Alura
+    hours: 30
+    url: https://www.alura.com.br/curso-online-python-3-fundamentos
+    status: todo
+    year: ''
+  - name: Python 3 do básico ao avançado + Projetos
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/python-3-do-basico-ao-avancado-projetos/
+    status: todo
+    year: ''
+  django:
+  - name: Django 3 - Curso Completo e Prático
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/django-3-curso-completo-e-pratico/
+    status: todo
+    year: ''
+  - name: Django 2 - Curso Completo e Prático
+    issuer: Udemy
+    hours: 18
+    url: https://www.udemy.com/course/django-2-curso-completo-e-pratico/
+    status: todo
+    year: ''
+  - name: Django 3 - Desenvolvimento Web Python do Zero
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/django-3-desenvolvimento-web-python-do-zero/
+    status: todo
+    year: ''
+  - name: 'Django: Crie aplicações web com Python'
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-django
+    status: todo
+    year: ''
+  flask:
+  - name: 'Flask: Desenvolva aplicações web com Python'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/flask-desenvolva-aplicacoes-web-com-python/
+    status: todo
+    year: ''
+  - name: 'Python e Flask: Crie uma API REST do zero'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/python-flask-crie-uma-api-rest-do-zero/
+    status: todo
+    year: ''
+  - name: 'Flask Framework: Crie aplicações web com Python'
+    issuer: Udemy
+    hours: 7
+    url: https://www.udemy.com/course/flask-framework-crie-aplicacoes-web-com-python/
+    status: todo
+    year: ''
+  - name: Desenvolvimento Web com Python e Flask
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-python-flask
+    status: todo
+    year: ''
+  fastapi:
+  - name: 'FastAPI: Crie APIs modernas em Python'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/fastapi-crie-apis-modernas-em-python/
+    status: todo
+    year: ''
+  - name: FastAPI - Desenvolvimento de APIs com Python
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/fastapi-desenvolvimento-de-apis-com-python/
+    status: todo
+    year: ''
+  - name: Desenvolvendo APIs REST com FastAPI e Python
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/desenvolvendo-apis-rest-com-fastapi-e-python/
+    status: todo
+    year: ''
+  - name: API Development with FastAPI
+    issuer: Coursera
+    hours: 15
+    url: https://www.coursera.org/learn/api-development-with-fastapi
+    status: todo
+    year: ''
+  rust:
+  - name: Introdução ao Rust
+    issuer: Alura
+    hours: 6
+    url: https://www.alura.com.br/curso-online-introducao-rust
+    status: todo
+    year: ''
+  - name: 'Rust: Fundamentos para Iniciantes'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/rust-fundamentos-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Rust: Programação de Sistemas'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/rust-programacao-de-sistemas/
+    status: todo
+    year: ''
+  - name: 'Rust: Guia Completo para Desenvolvimento Seguro'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/rust-guia-completo-para-desenvolvimento-seguro/
+    status: todo
+    year: ''
+  - name: Fundamentos de Rust
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-fundamentos-rust
+    status: todo
+    year: ''
+  go:
+  - name: 'Go: Entendendo a Linguagem de Programação Go'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/go-entendendo-a-linguagem-de-programacao-go/
+    status: todo
+    year: ''
+  - name: 'Go: Programação Concorrente e Paralela'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-go-programacao-concorrente-paralela
+    status: todo
+    year: ''
+  - name: 'Go: Programação Concorrente na Prática'
+    issuer: Udemy
+    hours: 5.5
+    url: https://www.udemy.com/course/go-programacao-concorrente-na-pratica/
+    status: todo
+    year: ''
+  - name: Curso Completo de Go (Golang) do Básico ao Avançado
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/curso-completo-de-go-golang-do-basico-ao-avancado/
+    status: todo
+    year: ''
+  - name: 'Formação Go: Fundamentos e Desenvolvimento Web'
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/formacao-go
+    status: todo
+    year: ''
+  golang:
+  - name: 'Golang: Fundamentos da Linguagem'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/golang-fundamentos-da-linguagem/
+    status: todo
+    year: ''
+  - name: 'Go: The Complete Developer''s Guide (Golang)'
+    issuer: Coursera
+    hours: 40
+    url: ''
+    status: todo
+    year: ''
+  - name: 'Go: Fundamentos da Linguagem'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/go-fundamentos-da-linguagem/
+    status: todo
+    year: ''
+  - name: 'Go: Desenvolvimento Web com Go (Golang)'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/go-desenvolvimento-web-com-go-golang/
+    status: todo
+    year: ''
+  - name: Formação Go Developer
+    issuer: Alura
+    hours: 40
+    url: https://www.alura.com.br/formacao-go-developer
+    status: todo
+    year: ''
+  node:
+  - name: 'Node.js: Do zero ao avançado'
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/nodejs-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: Node.js - API REST com Express, MongoDB e JWT
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/nodejs-api-rest-com-express-mongodb-e-jwt/
+    status: todo
+    year: ''
+  - name: 'Node.js: Fundamentos para Iniciantes'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/nodejs-fundamentos-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Node.js: API REST com Express e MongoDB'
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-nodejs-api-rest-express-mongodb
+    status: todo
+    year: ''
+  nestjs:
+  - name: 'NestJS: O Guia Completo (Node.js + TypeScript)'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/nestjs-o-guia-completo-nodejs-typescript/
+    status: todo
+    year: ''
+  - name: 'NestJS: Construindo APIs REST com Node.js, TypeScript e Prisma'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/nestjs-construindo-apis-rest-com-nodejs-typescript-e-prisma/
+    status: todo
+    year: ''
+  - name: 'NestJS: API RESTful com Node.js, TypeScript e MongoDB'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/nestjs-api-restful-com-nodejs-typescript-e-mongodb/
+    status: todo
+    year: ''
+  - name: 'NestJS: Desenvolvendo APIs com Node.js e TypeScript'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-nestjs-nodejs-typescript
+    status: todo
+    year: ''
+  react:
+  - name: React do Zero ao Avançado (Hooks, Redux, Router, API, Testes)
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/react-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: 'React Native: Desenvolva Apps para Android e iOS do zero!'
+    issuer: Udemy
+    hours: 35
+    url: https://www.udemy.com/course/react-native-do-zero/
+    status: todo
+    year: ''
+  - name: 'React: Crie aplicações web com JavaScript'
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/react-crie-aplicacoes-web-com-javascript/
+    status: todo
+    year: ''
+  - name: Front-end com React
+    issuer: Alura
+    hours: 30
+    url: https://www.alura.com.br/curso-online-front-end-react
+    status: todo
+    year: ''
+  next.js:
+  - name: 'Next.js: React Server Side Rendering & Static Sites'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/nextjs-react-server-side-rendering-static-sites/
+    status: todo
+    year: ''
+  - name: Next.js e React - Crie aplicações web modernas
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/nextjs-react-crie-aplicacoes-web-modernas/
+    status: todo
+    year: ''
+  - name: Desenvolvimento Web com React e Next.js
+    issuer: Alura
+    hours: 15
+    url: https://www.alura.com.br/curso-online-nextjs-react
+    status: todo
+    year: ''
+  - name: Next.js do Zero ao Avançado (React + Next + TypeScript)
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/nextjs-do-zero-ao-avancado-react-next-typescript/
+    status: todo
+    year: ''
+  - name: 'Next.js: Criando Aplicações React com SSR e SSG'
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-next-js-criando-aplicacoes-react-ssr-ssg
+    status: todo
+    year: ''
+  angular:
+  - name: Angular - O Guia Completo (2023)
+    issuer: Udemy
+    hours: 24
+    url: https://www.udemy.com/course/angular-o-guia-completo/
+    status: todo
+    year: ''
+  - name: Angular 13 - Curso Completo e Prático
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/angular-13-curso-completo-e-pratico/
+    status: todo
+    year: ''
+  - name: 'Curso Angular 12: Essencial para Iniciantes'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/curso-angular-12-essencial-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Formação Angular
+    issuer: Alura
+    hours: 40
+    url: https://www.alura.com.br/formacao-angular
+    status: todo
+    year: ''
+  vue:
+  - name: Vue JS 2 - O Guia Completo (incl. Vue Router e Vuex)
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/vue-js-2-o-guia-completo/
+    status: todo
+    year: ''
+  - name: Vue 3 do Zero ao Avançado com Vuex e Vue Router
+    issuer: Udemy
+    hours: 25
+    url: https://www.udemy.com/course/vue-3-do-zero-ao-avancado-com-vuex-e-vue-router/
+    status: todo
+    year: ''
+  - name: 'Vue.js: Crie aplicações SPA com Vue Router e Vuex'
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/vuejs-crie-aplicacoes-spa-com-vue-router-e-vuex/
+    status: todo
+    year: ''
+  nuxt:
+  - name: Nuxt.js - Vue.js com SSR e SPA
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/nuxtjs-vuejs-com-ssr-e-spa/
+    status: todo
+    year: ''
+  - name: Curso Completo de Nuxt.js 3 - Vue.js Framework
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/curso-completo-de-nuxtjs-3-vuejs-framework/
+    status: todo
+    year: ''
+  - name: 'Nuxt.js: Construindo aplicações Vue.js com SSR'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/nuxtjs-construindo-aplicacoes-vuejs-com-ssr/
+    status: todo
+    year: ''
+  - name: Criando aplicações com Nuxt.js
+    issuer: Alura
+    hours: 5
+    url: https://www.alura.com.br/curso-online-nuxt-js
+    status: todo
+    year: ''
+  typescript:
+  - name: 'Typescript: Fundamentos e Prática'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/typescript-fundamentos-e-pratica/
+    status: todo
+    year: ''
+  - name: 'TypeScript: Aprenda o básico e crie aplicações'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/typescript-aprenda-o-basico-e-crie-aplicacoes/
+    status: todo
+    year: ''
+  - name: 'TypeScript: Programação para JavaScript moderno'
+    issuer: Alura
+    hours: 15
+    url: https://www.alura.com.br/curso-online-typescript-programacao-javascript-moderno
+    status: todo
+    year: ''
+  - name: 'TypeScript: Fundamentos para Desenvolvedores JavaScript'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/typescript-fundamentos-para-desenvolvedores-javascript/
+    status: todo
+    year: ''
+  - name: 'TypeScript: Programação JavaScript com Tipagem'
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-typescript
+    status: todo
+    year: ''
+  javascript:
+  - name: JavaScript do Zero ao Avançado 2023 + Projetos
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/javascript-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: 'JavaScript: Entendendo a Linguagem na Prática'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/javascript-entendendo-a-linguagem-na-pratica/
+    status: todo
+    year: ''
+  - name: JavaScript Moderno Guia Definitivo Construindo 7 Projetos
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/javascript-moderno-guia-definitivo-construindo-7-projetos/
+    status: todo
+    year: ''
+  ruby:
+  - name: Ruby on Rails 6 Completo - Crie Aplicações Web do Zero
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/ruby-on-rails-6-completo/
+    status: todo
+    year: ''
+  - name: Curso Completo de Ruby on Rails
+    issuer: Udemy
+    hours: 25
+    url: https://www.udemy.com/course/curso-completo-de-ruby-on-rails/
+    status: todo
+    year: ''
+  - name: Formação Ruby on Rails
+    issuer: Alura
+    hours: 40
+    url: https://www.alura.com.br/formacao-ruby-on-rails
+    status: todo
+    year: ''
+  - name: Ruby on Rails 6 e 7 - Crie Aplicações Web Profissionais
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/ruby-on-rails-6-e-7-crie-aplicacoes-web-profissionais/
+    status: todo
+    year: ''
+  ruby on rails:
+  - name: 'Ruby on Rails: Desenvolvimento Web com Ruby'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/ruby-on-rails-desenvolvimento-web-com-ruby/
+    status: todo
+    year: ''
+  - name: 'Ruby on Rails: Do Básico ao Avançado'
+    issuer: Udemy
+    hours: 18
+    url: https://www.udemy.com/course/ruby-on-rails-do-basico-ao-avancado/
+    status: todo
+    year: ''
+  - name: Ruby on Rails para Iniciantes
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/ruby-on-rails-para-iniciantes/
+    status: todo
+    year: ''
+  swift:
+  - name: 'Swift 5: Aprenda a programar para iOS do zero'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/swift-5-aprenda-a-programar-para-ios-do-zero/
+    status: todo
+    year: ''
+  - name: Desenvolvimento iOS 13 com Swift 5 - Curso Completo
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/ios-13-swift-5-curso-completo/
+    status: todo
+    year: ''
+  - name: Swift para Iniciantes - Curso Completo
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/swift-para-iniciantes-curso-completo/
+    status: todo
+    year: ''
+  - name: Desenvolvimento iOS com Swift
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-ios-swift
+    status: todo
+    year: ''
+  ios:
+  - name: 'Swift 5: Aprenda a criar apps para iOS 13 do zero'
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/swift-5-aprenda-a-criar-apps-para-ios-13-do-zero/
+    status: todo
+    year: ''
+  - name: Desenvolvimento iOS 13 - Curso Completo e Prático
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/desenvolvimento-ios-13-curso-completo-e-pratico/
+    status: todo
+    year: ''
+  - name: Curso de Swift 5 para iOS - Desenvolvimento de Apps
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/curso-de-swift-5-para-ios-desenvolvimento-de-apps/
+    status: todo
+    year: ''
+  - name: Formação iOS Developer
+    issuer: Alura
+    hours: 60
+    url: https://www.alura.com.br/formacao-ios-developer
+    status: todo
+    year: ''
+  android:
+  - name: Desenvolvimento Android Completo 2023 - Java + Kotlin
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/desenvolvimento-android-completo/
+    status: todo
+    year: ''
+  - name: Android App Development for Beginners
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/android-app-development-for-beginners/
+    status: todo
+    year: ''
+  - name: Desenvolvimento Android Completo 2023 + Projetos + Kotlin
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/desenvolvimento-android-completo-kotlin/
+    status: todo
+    year: ''
+  - name: Formação Android Developer
+    issuer: Alura
+    hours: 60
+    url: https://www.alura.com.br/formacao-android-developer
+    status: todo
+    year: ''
+  flutter:
+  - name: Flutter & Dart - Desenvolvimento de Apps Android e iOS
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/flutter-dart-crie-apps-android-ios/
+    status: todo
+    year: ''
+  - name: 'Flutter: Crie Apps para Android e iOS com Flutter e Dart'
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/flutter-crie-apps-android-e-ios-com-flutter-e-dart/
+    status: todo
+    year: ''
+  - name: 'Flutter: Crie Aplicações para iOS e Android'
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-flutter
+    status: todo
+    year: ''
+  - name: Flutter & Dart - Curso Completo [2024]
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/flutter-dart-curso-completo/
+    status: todo
+    year: ''
+  - name: 'Flutter: Crie Aplicações Mobile com Dart'
+    issuer: Alura
+    hours: 25
+    url: https://www.alura.com.br/curso-online-flutter-dart
+    status: todo
+    year: ''
+  react native:
+  - name: 'React Native: Crie aplicativos para Android e iOS'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/react-native-crie-aplicativos-android-ios/
+    status: todo
+    year: ''
+  - name: 'React Native: Crie aplicativos móveis com JavaScript'
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-react-native
+    status: todo
+    year: ''
+  - name: React Native do zero ao avançado + React Navigation + Redux
+    issuer: Udemy
+    hours: 25
+    url: https://www.udemy.com/course/react-native-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: React Native Expo do zero ao avançado
+    issuer: Udemy
+    hours: 18
+    url: https://www.udemy.com/course/react-native-expo-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: 'React Native: Crie Aplicativos Mobile com JavaScript'
+    issuer: Alura
+    hours: 30
+    url: https://www.alura.com.br/curso-online-react-native
+    status: todo
+    year: ''
+  elixir:
+  - name: 'Elixir: Fundamentos para Iniciantes'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/elixir-fundamentos-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Elixir e Phoenix: Desenvolvimento Web com Elixir'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/elixir-e-phoenix-desenvolvimento-web-com-elixir/
+    status: todo
+    year: ''
+  - name: 'Elixir: Introdução à Programação Funcional'
+    issuer: Alura
+    hours: 6
+    url: https://www.alura.com.br/curso-online-elixir-introducao-programacao-funcional
+    status: todo
+    year: ''
+  - name: 'Elixir: Programação Funcional para Iniciantes'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/elixir-programacao-funcional-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Elixir para Iniciantes
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-elixir-iniciantes
+    status: todo
+    year: ''
+  scala:
+  - name: Scala Completo - Programação Funcional e Orientada a Objetos
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/scala-completo-programacao-funcional-e-orientada-a-objetos/
+    status: todo
+    year: ''
+  - name: Programação Funcional com Scala
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/programacao-funcional-com-scala/
+    status: todo
+    year: ''
+  - name: 'Scala para Iniciantes: Fundamentos da Linguagem'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/scala-para-iniciantes-fundamentos-da-linguagem/
+    status: todo
+    year: ''
+  - name: Functional Programming Principles in Scala
+    issuer: Coursera
+    hours: 30
+    url: https://www.coursera.org/learn/scala-functional-programming
+    status: todo
+    year: ''
+  c++:
+  - name: 'Curso de C++: Aprenda a programar do zero ao avançado'
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/curso-de-cpp-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: C++ For C Programmers, Part A
+    issuer: Coursera
+    hours: 20
+    url: https://www.coursera.org/learn/c-plus-plus-a
+    status: todo
+    year: ''
+  - name: 'C++ Completo 2024: Do Básico ao Avançado'
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/c-completo/
+    status: todo
+    year: ''
+  - name: 'Programação em C++: Fundamentos para Iniciantes'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/programacao-em-cpp-fundamentos/
+    status: todo
+    year: ''
+  - name: C++ Fundamentals
+    issuer: Coursera
+    hours: 40
+    url: https://www.coursera.org/learn/c-plus-plus-fundamentals
+    status: todo
+    year: ''
+  delphi:
+  - name: 'Delphi: Fundamentos da Programação'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/delphi-fundamentos-da-programacao/
+    status: todo
+    year: ''
+  - name: 'Delphi Completo: Aprenda a Programar com Delphi'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/delphi-completo-aprenda-a-programar-com-delphi/
+    status: todo
+    year: ''
+  - name: Curso de Delphi para Iniciantes
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/curso-de-delphi-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Desenvolvimento de Aplicações com Delphi
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-desenvolvimento-aplicacoes-delphi
+    status: todo
+    year: ''
+  salesforce:
+  - name: 'Salesforce para Iniciantes: Aprenda a plataforma do zero'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/salesforce-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Salesforce Lightning: Crie Aplicações sem Código'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/salesforce-lightning-crie-aplicacoes-sem-codigo/
+    status: todo
+    year: ''
+  - name: Salesforce Administrator Certification Practice Tests
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/salesforce-administrator-certification-practice-tests/
+    status: todo
+    year: ''
+  wordpress:
+  - name: WordPress para Iniciantes - Crie seu Site do Zero
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/wordpress-para-iniciantes-crie-seu-site-do-zero/
+    status: todo
+    year: ''
+  - name: Curso Completo de WordPress - Crie Sites Profissionais
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/curso-completo-de-wordpress-crie-sites-profissionais/
+    status: todo
+    year: ''
+  - name: 'WordPress: Crie Sites e Blogs Profissionais'
+    issuer: Udemy
+    hours: 7
+    url: https://www.udemy.com/course/wordpress-crie-sites-e-blogs-profissionais/
+    status: todo
+    year: ''
+  - name: 'WordPress: Criação de Sites'
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-wordpress-criacao-sites
+    status: todo
+    year: ''
+  magento:
+  - name: Magento 2 - Desenvolvimento de Loja Virtual
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/magento-2-desenvolvimento-de-loja-virtual/
+    status: todo
+    year: ''
+  - name: Magento 2 para Iniciantes - Crie sua Loja Virtual
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/magento-2-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Magento 2 - Desenvolvimento e Customização
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/magento-2-desenvolvimento-e-customizacao/
+    status: todo
+    year: ''
+  - name: Introdução ao Magento 2
+    issuer: Alura
+    hours: 4
+    url: https://www.alura.com.br/curso-online-introducao-magento-2
+    status: todo
+    year: ''
+  vtex:
+  - name: VTEX IO - Desenvolvimento de Apps para VTEX
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/vtex-io-desenvolvimento-de-apps-para-vtex/
+    status: todo
+    year: ''
+  - name: 'VTEX: Como criar uma loja virtual do zero'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/vtex-como-criar-uma-loja-virtual-do-zero/
+    status: todo
+    year: ''
+  - name: VTEX IO - Desenvolvimento Frontend para e-commerce
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/vtex-io-desenvolvimento-frontend-para-e-commerce/
+    status: todo
+    year: ''
+  - name: 'VTEX IO: Desenvolvimento de lojas e apps'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-vtex-io-desenvolvimento-lojas-apps
+    status: todo
+    year: ''
+  shopify:
+  - name: Shopify - Crie sua loja virtual e venda online
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/shopify-crie-sua-loja-virtual-e-venda-online/
+    status: todo
+    year: ''
+  - name: Criando uma loja virtual com Shopify
+    issuer: Alura
+    hours: 6
+    url: https://www.alura.com.br/curso-online-shopify-loja-virtual
+    status: todo
+    year: ''
+  - name: 'Shopify: Crie sua Loja Virtual do Zero'
+    issuer: Udemy
+    hours: 5.5
+    url: https://www.udemy.com/course/shopify-crie-sua-loja-virtual-do-zero/
+    status: todo
+    year: ''
+  - name: 'Shopify para Iniciantes: Monte sua Loja Online'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/shopify-para-iniciantes-monte-sua-loja-online/
+    status: todo
+    year: ''
+  dart:
+  - name: 'Aprenda Dart: Curso Completo para Iniciantes'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/aprenda-dart-curso-completo-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Dart: linguagem de programação para Flutter'
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-dart-linguagem-flutter
+    status: todo
+    year: ''
+  - name: Dart - Programação para iniciantes
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/dart-programacao-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Dart e Flutter: Desenvolva Apps Android e iOS'
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/dart-e-flutter-desenvolva-apps-android-e-ios/
+    status: todo
+    year: ''
+  - name: 'Dart: Fundamentos da linguagem'
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-dart-fundamentos
+    status: todo
+    year: ''
+  cobol:
+  - name: 'COBOL Essencial: Fundamentos da Linguagem'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/cobol-essencial-fundamentos-da-linguagem/
+    status: todo
+    year: ''
+  - name: Mainframe COBOL Programming
+    issuer: Coursera
+    hours: 15
+    url: https://www.coursera.org/learn/mainframe-cobol-programming
+    status: todo
+    year: ''
+  - name: 'COBOL: Programação para Iniciantes'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/cobol-programacao-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'COBOL Básico: Aprenda a Programar em COBOL'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/cobol-basico-aprenda-a-programar-em-cobol/
+    status: todo
+    year: ''
+  - name: Introdução ao COBOL
+    issuer: Alura
+    hours: 4
+    url: https://www.alura.com.br/curso-online-introducao-cobol
+    status: todo
+    year: ''
+  abap:
+  - name: Curso Completo de ABAP - Programação SAP
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/curso-completo-de-abap-programacao-sap/
+    status: todo
+    year: ''
+  - name: ABAP Programming for SAP
+    issuer: Coursera
+    hours: 15
+    url: ''
+    status: todo
+    year: ''
+  - name: ABAP - Programação para Iniciantes
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/abap-programacao-para-iniciantes/
+    status: todo
+    year: ''
+  - name: SAP ABAP - Desenvolvimento Básico
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/sap-abap-desenvolvimento-basico/
+    status: todo
+    year: ''
+  - name: Formação SAP ABAP
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/formacao-sap-abap
+    status: todo
+    year: ''
+  pl/sql:
+  - name: Curso Completo de PL/SQL - Oracle
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/curso-completo-de-plsql-oracle/
+    status: todo
+    year: ''
+  - name: PL/SQL - Linguagem Procedural Oracle
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/plsql-linguagem-procedural-oracle/
+    status: todo
+    year: ''
+  - name: Oracle PL/SQL Fundamentals
+    issuer: Coursera
+    hours: 15
+    url: ''
+    status: todo
+    year: ''
+  - name: 'PL/SQL: Curso Completo de Banco de Dados Oracle'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/plsql-curso-completo-de-banco-de-dados-oracle/
+    status: todo
+    year: ''
+  - name: 'PL/SQL: Fundamentos e Práticas'
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-plsql-fundamentos-praticas
+    status: todo
+    year: ''
+  outsystems:
+  - name: OutSystems - Desenvolvimento Low-Code para Iniciantes
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/outsystems-desenvolvimento-low-code-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'OutSystems: Crie Aplicações Web e Mobile Low-Code'
+    issuer: Udemy
+    hours: 7
+    url: https://www.udemy.com/course/outsystems-crie-aplicacoes-web-e-mobile-low-code/
+    status: todo
+    year: ''
+  - name: Desenvolvimento Low-Code com OutSystems
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-outsystens-desenvolvimento-low-code
+    status: todo
+    year: ''
+  - name: 'OutSystems: Desenvolvimento de Aplicações Web e Mobile'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/outsystems-desenvolvimento-aplicacoes-web-e-mobile/
+    status: todo
+    year: ''
+  - name: Formação OutSystems Developer
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/formacao-outsystens-developer
+    status: todo
+    year: ''
+  power platform:
+  - name: 'Microsoft Power Platform: Fundamentos'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/microsoft-power-platform-fundamentos/
+    status: todo
+    year: ''
+  - name: 'Power Apps: Crie Aplicativos sem Programação'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/powerapps-crie-aplicativos-sem-programacao/
+    status: todo
+    year: ''
+  - name: Automatize Processos com Power Automate
+    issuer: Udemy
+    hours: 7
+    url: https://www.udemy.com/course/automatize-processos-com-power-automate/
+    status: todo
+    year: ''
+  - name: Introdução à Power Platform
+    issuer: Alura
+    hours: 5
+    url: https://www.alura.com.br/curso-online-introducao-power-platform
+    status: todo
+    year: ''
+  unity:
+  - name: 'Unity 3D: Do Zero ao Profissional - Crie 7 Jogos'
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/unity-3d-do-zero-ao-profissional/
+    status: todo
+    year: ''
+  - name: Curso Completo de Unity 3D - Crie Jogos do Zero
+    issuer: Udemy
+    hours: 35
+    url: https://www.udemy.com/course/curso-completo-de-unity-3d-crie-jogos-do-zero/
+    status: todo
+    year: ''
+  - name: 'Unity 2D e 3D: Crie Jogos com C# e Unity 2023'
+    issuer: Udemy
+    hours: 30
+    url: https://www.udemy.com/course/unity-2d-e-3d-crie-jogos-com-csharp-e-unity/
+    status: todo
+    year: ''
+  spring boot:
+  - name: 'Spring Boot: Crie uma API REST com Spring Security e JWT'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/spring-boot-security-jwt/
+    status: todo
+    year: ''
+  - name: 'Spring Boot: Crie APIs RESTful com Java'
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/curso-online-spring-boot
+    status: todo
+    year: ''
+  n8n:
+  - name: Automatize seus processos com n8n - Workflow Automation
+    issuer: Udemy
+    hours: 3.5
+    url: https://www.udemy.com/course/automatize-seus-processos-com-n8n-workflow-automation/
+    status: todo
+    year: ''
+  - name: 'Introdução ao n8n: Automação de Fluxos de Trabalho'
+    issuer: Udemy
+    hours: 2
+    url: https://www.udemy.com/course/introducao-ao-n8n-automacao-de-fluxos-de-trabalho/
+    status: todo
+    year: ''
+  - name: Automação de Processos com n8n - Curso Completo
+    issuer: Udemy
+    hours: 4
+    url: ''
+    status: todo
+    year: ''
+  - name: Automação de Processos com n8n
+    issuer: Alura
+    hours: 5
+    url: https://www.alura.com.br/curso-online-automacao-processos-n8n
+    status: todo
+    year: ''
+  ci/cd:
+  - name: 'CI/CD na Prática: Integração Contínua e Entrega Contínua'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/ci-cd-na-pratica-integracao-continua-e-entrega-continua/
+    status: todo
+    year: ''
+  - name: 'DevOps: CI/CD com Jenkins, Docker e Kubernetes'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/devops-cicd-com-jenkins-docker-e-kubernetes/
+    status: todo
+    year: ''
+  - name: 'Pipeline CI/CD com GitLab: Automatize seus processos de entrega'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/pipeline-cicd-com-gitlab-automatize-seus-processos-de-entrega/
+    status: todo
+    year: ''
+  - name: 'CI/CD com Jenkins: Automatize a entrega de software'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-jenkins-cicd
+    status: todo
+    year: ''
+  kubernetes:
+  - name: Kubernetes do Zero ao Avançado + Projetos
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/kubernetes-do-zero-ao-avancado-projetos/
+    status: todo
+    year: ''
+  - name: Kubernetes para Desenvolvedores e DevOps
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/kubernetes-para-desenvolvedores-e-devops/
+    status: todo
+    year: ''
+  - name: Kubernetes Essentials
+    issuer: Alura
+    hours: 10
+    url: https://www.alura.com.br/curso-online-kubernetes-essentials
+    status: todo
+    year: ''
+  gcp:
+  - name: Google Cloud Platform (GCP) - Guia Completo para Iniciantes
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/google-cloud-platform-gcp-guia-completo-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Google Cloud Platform: Fundamentos'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/google-cloud-platform-fundamentos/
+    status: todo
+    year: ''
+  - name: Google Cloud Platform - Certificação Associate Cloud Engineer
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/google-cloud-platform-associate-cloud-engineer-certification/
+    status: todo
+    year: ''
+  - name: 'Google Cloud Fundamentals: Core Infrastructure'
+    issuer: Coursera
+    hours: 20
+    url: https://www.coursera.org/learn/gcp-fundamentals
+    status: todo
+    year: ''
+  aws:
+  - name: AWS Certified Solutions Architect - Associate 2023
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/aws-certified-solutions-architect-associate/
+    status: todo
+    year: ''
+  - name: AWS para Iniciantes - Fundamentos da Computação em Nuvem
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/aws-para-iniciantes-fundamentos-da-computacao-em-nuvem/
+    status: todo
+    year: ''
+  - name: Amazon Web Services (AWS) - Guia Completo
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/amazon-web-services-aws-guia-completo/
+    status: todo
+    year: ''
+  - name: Formação AWS Cloud Practitioner
+    issuer: Alura
+    hours: 30
+    url: https://www.alura.com.br/formacao-aws-cloud-practitioner
+    status: todo
+    year: ''
+  terraform:
+  - name: 'Terraform: Guia Completo para Iniciantes'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/terraform-guia-completo-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Terraform - Do Zero ao Profissional
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/terraform-do-zero-ao-profissional/
+    status: todo
+    year: ''
+  - name: Infraestrutura como Código com Terraform
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/infraestrutura-como-codigo-com-terraform/
+    status: todo
+    year: ''
+  - name: 'Terraform: Getting Started'
+    issuer: Coursera
+    hours: 15
+    url: https://www.coursera.org/learn/terraform-getting-started
+    status: todo
+    year: ''
+  azure:
+  - name: Microsoft Azure - Guia Completo para Iniciantes
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/microsoft-azure-guia-completo-para-iniciantes/
+    status: todo
+    year: ''
+  - name: AZ-900 Microsoft Azure Fundamentals - Português
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/az-900-microsoft-azure-fundamentals-portugues/
+    status: todo
+    year: ''
+  - name: 'Microsoft Azure: Fundamentos e Serviços Essenciais'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/microsoft-azure-fundamentos-e-servicos-essenciais/
+    status: todo
+    year: ''
+  - name: Microsoft Azure Fundamentals
+    issuer: Coursera
+    hours: 15
+    url: https://www.coursera.org/learn/microsoft-azure-fundamentals
+    status: todo
+    year: ''
+  docker:
+  - name: Docker Essencial - Do Zero ao Prod
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/docker-essencial-do-zero-ao-prod/
+    status: todo
+    year: ''
+  - name: Docker para Desenvolvedores e DevOps
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/docker-para-desenvolvedores-e-devops/
+    status: todo
+    year: ''
+  - name: 'Docker: Entendendo Containers na Prática'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-docker-entendendo-containers-pratica
+    status: todo
+    year: ''
+  sql server:
+  - name: 'SQL Server: Curso Completo de Banco de Dados'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/sql-server-curso-completo-de-banco-de-dados/
+    status: todo
+    year: ''
+  - name: 'SQL Server para Iniciantes: Aprenda SQL do Zero'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/sql-server-para-iniciantes-aprenda-sql-do-zero/
+    status: todo
+    year: ''
+  - name: 'SQL Server: Fundamentos e Consultas'
+    issuer: Alura
+    hours: 15
+    url: https://www.alura.com.br/curso-online-sql-server-fundamentos-consultas
+    status: todo
+    year: ''
+  postgresql:
+  - name: PostgreSQL para Iniciantes
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/postgresql-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Banco de Dados com PostgreSQL para Iniciantes
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/banco-de-dados-com-postgresql-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Banco de Dados com PostgreSQL
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-banco-de-dados-postgresql
+    status: todo
+    year: ''
+  apex:
+  - name: Apex - Desenvolvimento Salesforce
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/apex-desenvolvimento-salesforce/
+    status: todo
+    year: ''
+  - name: Salesforce Apex e Visualforce para iniciantes
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/salesforce-apex-e-visualforce-para-iniciantes/
+    status: todo
+    year: ''
+  - name: Apex e Lightning Web Components - Desenvolvimento Salesforce
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/apex-e-lightning-web-components-desenvolvimento-salesforce/
+    status: todo
+    year: ''
+  - name: Trilha Salesforce Developer
+    issuer: Alura
+    hours: 20
+    url: https://www.alura.com.br/trilha-salesforce-developer
+    status: todo
+    year: ''
+  kafka:
+  - name: 'Apache Kafka para Iniciantes: Fundamentos e Prática'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/apache-kafka-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Apache Kafka: Fundamentos e Prática para Desenvolvedores'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/apache-kafka-fundamentos-e-pratica/
+    status: todo
+    year: ''
+  - name: Apache Kafka - Curso Completo para Desenvolvedores
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/apache-kafka-curso-completo/
+    status: todo
+    year: ''
+  - name: Apache Kafka Essentials
+    issuer: Coursera
+    hours: 15
+    url: https://www.coursera.org/learn/apache-kafka-essentials
+    status: todo
+    year: ''
+  vue.js:
+  - name: 'Vue.js: Desenvolva aplicações web modernas'
+    issuer: Alura
+    hours: 15
+    url: https://www.alura.com.br/curso-online-vue-js
+    status: todo
+    year: ''
+  node.js:
+  - name: 'Node.js: Desenvolvimento de APIs REST com JavaScript'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/nodejs-desenvolvimento-de-apis-rest-com-javascript/
+    status: todo
+    year: ''
+  - name: 'Node.js: Programação Assíncrona e Eventos'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-nodejs-programacao-assincrona-eventos
+    status: todo
+    year: ''
+  mongodb:
+  - name: MongoDB para Iniciantes
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/mongodb-para-iniciantes/
+    status: todo
+    year: ''
+  - name: MongoDB Essentials - Complete MongoDB Guide
+    issuer: Udemy
+    hours: 7
+    url: https://www.udemy.com/course/mongodb-essentials-complete-mongodb-guide/
+    status: todo
+    year: ''
+  - name: 'MongoDB: Introdução e Noções Básicas'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-mongodb-introducao
+    status: todo
+    year: ''
+  mysql:
+  - name: Curso Completo de MySQL - Iniciante ao Avançado
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/curso-completo-de-mysql-iniciante-ao-avancado/
+    status: todo
+    year: ''
+  - name: MySQL para Iniciantes - Curso Prático
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/mysql-para-iniciantes-curso-pratico/
+    status: todo
+    year: ''
+  - name: Banco de Dados com MySQL
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-banco-de-dados-mysql
+    status: todo
+    year: ''
+  springboot:
+  - name: 'Spring Boot e Spring MVC: Desenvolvimento Web com Java'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/spring-boot-e-spring-mvc-desenvolvimento-web-com-java/
+    status: todo
+    year: ''
+  rabbitmq:
+  - name: 'RabbitMQ: Mensageria para Desenvolvedores'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/rabbitmq-mensageria-para-desenvolvedores/
+    status: todo
+    year: ''
+  - name: 'RabbitMQ: Mensageria e Fila de Mensagens para Iniciantes'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/rabbitmq-mensageria-e-fila-de-mensagens-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'RabbitMQ: Mensageria com RabbitMQ e Spring Boot'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/rabbitmq-mensageria-com-rabbitmq-e-spring-boot/
+    status: todo
+    year: ''
+  - name: RabbitMQ Essentials
+    issuer: Coursera
+    hours: 8
+    url: ''
+    status: todo
+    year: ''
+  php:
+  - name: PHP 7 Completo - Curso do Básico ao Avançado
+    issuer: Udemy
+    hours: 40
+    url: https://www.udemy.com/course/php-7-completo/
+    year: ''
+    status: todo
+  - name: 'Formação PHP: do Básico ao Avançado'
+    issuer: Alura
+    hours: 50
+    url: https://www.alura.com.br/formacao-php
+    year: ''
+    status: todo
+  - name: PHP for Beginners - Become a PHP Master - CMS Project
+    issuer: Coursera
+    hours: 20
+    url: ''
+    year: ''
+    status: todo
+  - name: PHP 7 do Básico ao Avançado + Projetos + 20h de Conteúdo
+    issuer: Udemy
+    hours: 20
+    url: https://www.udemy.com/course/php-7-do-basico-ao-avancado-projetos/
+    status: todo
+    year: ''
+  - name: Curso Completo de PHP 7 e MySQL - Crie um sistema completo
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/curso-completo-de-php-7-e-mysql-crie-um-sistema-completo/
+    status: todo
+    year: ''
+  - name: 'Formação PHP: Fundamentos e Desenvolvimento Web'
+    issuer: Alura
+    hours: 40
+    url: https://www.alura.com.br/formacao-php
+    status: todo
+    year: ''
+  typeorm:
+  - name: 'TypeORM: ORM para Node.js com TypeScript'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/typeorm-orm-para-nodejs-com-typescript/
+    status: todo
+    year: ''
+  - name: Node.js, Express, TypeORM e MySQL - API REST do zero
+    issuer: Udemy
+    hours: 7
+    url: https://www.udemy.com/course/nodejs-express-typeorm-mysql-api-rest-do-zero/
+    status: todo
+    year: ''
+  - name: 'NestJS: Construindo APIs REST com TypeORM e PostgreSQL'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/nestjs-construindo-apis-rest-com-typeorm-e-postgresql/
+    status: todo
+    year: ''
+  - name: 'TypeORM: Introdução e Prática'
+    issuer: Alura
+    hours: 4
+    url: https://www.alura.com.br/curso-online-typeorm-introducao-pratica
+    status: todo
+    year: ''
+  oracle:
+  - name: 'Oracle SQL: Consultas SQL para Iniciantes'
+    issuer: Udemy
+    hours: 9
+    url: https://www.udemy.com/course/oracle-sql-consultas-sql-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Oracle Database 12c: SQL Completo'
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/oracle-database-12c-sql-completo/
+    status: todo
+    year: ''
+  - name: 'Oracle PL/SQL: Programação com Oracle'
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/oracle-plsql-programacao-com-oracle/
+    status: todo
+    year: ''
+  - name: 'Oracle Database 19c: Fundamentos e Administração'
+    issuer: Alura
+    hours: 20
+    url: ''
+    status: todo
+    year: ''
+  redis:
+  - name: 'Redis: O Guia Completo do Iniciante ao Avançado'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/redis-o-guia-completo-do-iniciante-ao-avancado/
+    status: todo
+    year: ''
+  - name: 'Masterclass Redis: Banco de Dados em Memória'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/masterclass-redis-banco-de-dados-em-memoria/
+    status: todo
+    year: ''
+  - name: 'Redis para Desenvolvedores: Do Básico ao Avançado'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/redis-para-desenvolvedores-do-basico-ao-avancado/
+    status: todo
+    year: ''
+  - name: Redis Essentials
+    issuer: Alura
+    hours: 3
+    url: https://www.alura.com.br/curso-online-redis-essentials
+    status: todo
+    year: ''
+  microserviços:
+  - name: Microservices com Spring Boot e Spring Cloud
+    issuer: Udemy
+    hours: 15
+    url: https://www.udemy.com/course/microservices-com-spring-boot-e-spring-cloud/
+    status: todo
+    year: ''
+  - name: Microservices na prática com Spring Boot e Docker
+    issuer: Udemy
+    hours: 12
+    url: https://www.udemy.com/course/microservices-na-pratica-com-spring-boot-e-docker/
+    status: todo
+    year: ''
+  - name: 'Microservices: arquitetura e desenvolvimento'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/microservices-arquitetura-e-desenvolvimento/
+    status: todo
+    year: ''
+  - name: Microservices Fundamentals
+    issuer: Coursera
+    hours: 20
+    url: https://www.coursera.org/learn/microservices-fundamentals
+    status: todo
+    year: ''
+  sqlserver:
+  - name: 'SQL Server: do zero ao avançado'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/sql-server-do-zero-ao-avancado/
+    status: todo
+    year: ''
+  - name: SQL Server para Iniciantes
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/sql-server-para-iniciantes/
+    status: todo
+    year: ''
+  - name: 'Microsoft SQL Server: Consultas T-SQL'
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/microsoft-sql-server-consultas-tsql/
+    status: todo
+    year: ''
+  - name: 'SQL Server na Prática: Consultas e Administração'
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-sql-server-pratica-consultas-administracao
+    status: todo
+    year: ''
+  lightning components:
+  - name: Salesforce Lightning Component Framework - Curso Completo
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/salesforce-lightning-component-framework-curso-completo/
+    status: todo
+    year: ''
+  - name: Salesforce Lightning Web Components (LWC) - Guia Completo
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/salesforce-lightning-web-components-lwc-guia-completo/
+    status: todo
+    year: ''
+  - name: Desenvolvimento com Lightning Components no Salesforce
+    issuer: Udemy
+    hours: 6
+    url: ''
+    status: todo
+    year: ''
+  - name: Desenvolvimento de Aplicações com Lightning Web Components
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-lightning-web-components
+    status: todo
+    year: ''
+  tdd:
+  - name: Test Driven Development (TDD) na prática com Java
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/test-driven-development-tdd-na-pratica-com-java/
+    status: todo
+    year: ''
+  - name: 'TDD - Test Driven Development: Desenvolvimento Orientado a Testes'
+    issuer: Udemy
+    hours: 4.5
+    url: https://www.udemy.com/course/tdd-test-driven-development-desenvolvimento-orientado-a-testes/
+    status: todo
+    year: ''
+  - name: Testes automatizados com TDD e BDD em JavaScript
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/testes-automatizados-com-tdd-e-bdd-em-javascript/
+    status: todo
+    year: ''
+  - name: Test Driven Development (TDD) com JavaScript
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-test-driven-development-tdd-javascript
+    status: todo
+    year: ''
+  graphql:
+  - name: 'GraphQL: API com Node.js, Apollo Server e MongoDB'
+    issuer: Udemy
+    hours: 7.5
+    url: https://www.udemy.com/course/graphql-api-com-nodejs-apollo-server-e-mongodb/
+    status: todo
+    year: ''
+  - name: 'GraphQL Completo: API GraphQL com Node.js, Apollo e React'
+    issuer: Udemy
+    hours: 10
+    url: https://www.udemy.com/course/graphql-completo-api-graphql-com-nodejs-apollo-e-react/
+    status: todo
+    year: ''
+  - name: 'GraphQL: Fundamentos e Prática com Apollo Client e Server'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/graphql-fundamentos-e-pratica-com-apollo-client-e-server/
+    status: todo
+    year: ''
+  - name: 'GraphQL: Introdução e Desenvolvimento de APIs'
+    issuer: Alura
+    hours: 8
+    url: https://www.alura.com.br/curso-online-graphql-introducao-desenvolvimento-apis
+    status: todo
+    year: ''
+  jest:
+  - name: 'Testes Automatizados com Jest: Teste seu código JavaScript'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/testes-automatizados-com-jest/
+    status: todo
+    year: ''
+  - name: Jest - Testes Automatizados para JavaScript
+    issuer: Udemy
+    hours: 3.5
+    url: https://www.udemy.com/course/jest-testes-automatizados-para-javascript/
+    status: todo
+    year: ''
+  - name: Testes Automatizados com Jest e React
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/testes-automatizados-com-jest-e-react/
+    status: todo
+    year: ''
+  - name: Testes Automatizados com Jest
+    issuer: Alura
+    hours: 6
+    url: https://www.alura.com.br/curso-online-testes-automatizados-jest
+    status: todo
+    year: ''
+  sonarqube:
+  - name: 'SonarQube: Análise de Código e Qualidade de Software'
+    issuer: Udemy
+    hours: 3.5
+    url: https://www.udemy.com/course/sonarqube-analise-de-codigo-e-qualidade-de-software/
+    status: todo
+    year: ''
+  - name: 'SonarQube para Desenvolvedores: Melhore a Qualidade do Código'
+    issuer: Udemy
+    hours: 2.5
+    url: https://www.udemy.com/course/sonarqube-para-desenvolvedores/
+    status: todo
+    year: ''
+  - name: Qualidade de Código com SonarQube e Jenkins
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/qualidade-de-codigo-com-sonarqube-e-jenkins/
+    status: todo
+    year: ''
+  - name: 'SonarQube: Continuous Code Quality Inspection'
+    issuer: Coursera
+    hours: 5
+    url: ''
+    status: todo
+    year: ''
+  clean architecture:
+  - name: 'Clean Architecture: princípios, padrões e boas práticas'
+    issuer: Udemy
+    hours: 6
+    url: https://www.udemy.com/course/clean-architecture-principios-padroes-e-boas-praticas/
+    status: todo
+    year: ''
+  - name: Clean Architecture com .NET Core e C#
+    issuer: Udemy
+    hours: 8
+    url: https://www.udemy.com/course/clean-architecture-com-net-core-e-csharp/
+    status: todo
+    year: ''
+  - name: 'Clean Architecture: Como criar sistemas escaláveis e manuteníveis'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/clean-architecture-como-criar-sistemas-escalaveis-e-manutensiveis/
+    status: todo
+    year: ''
+  - name: Arquitetura Limpa na Prática
+    issuer: Alura
+    hours: 7
+    url: https://www.alura.com.br/curso-online-arquitetura-limpa-pratica
+    status: todo
+    year: ''
+  prisma:
+  - name: 'Prisma ORM: Conectando seu banco de dados ao Node.js'
+    issuer: Udemy
+    hours: 3.5
+    url: https://www.udemy.com/course/prisma-orm-conectando-seu-banco-de-dados-ao-nodejs/
+    status: todo
+    year: ''
+  - name: 'Node.js com Prisma ORM: Construindo APIs modernas'
+    issuer: Udemy
+    hours: 4
+    url: https://www.udemy.com/course/nodejs-com-prisma-orm-construindo-apis-modernas/
+    status: todo
+    year: ''
+  - name: 'Prisma ORM e TypeScript: do básico ao avançado'
+    issuer: Udemy
+    hours: 5
+    url: https://www.udemy.com/course/prisma-orm-e-typescript-do-basico-ao-avancado/
+    status: todo
+    year: ''
+  - name: 'Formação Node.js: API REST com Prisma e TypeScript'
+    issuer: Alura
+    hours: 12
+    url: https://www.alura.com.br/curso-online-nodejs-api-rest-prisma-typescript
+    status: todo
+    year: ''
