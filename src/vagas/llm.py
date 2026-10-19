@@ -1,15 +1,65 @@
-"""Camada Anthropic: classificação de vaga, currículo adaptado, respostas de formulário, importação de perfil."""
+"""Camada Claude Code SDK: classificação de vaga, currículo adaptado, respostas de formulário, importação de perfil.
+
+Usa o claude-code-sdk (pip install claude-code-sdk), que chama o CLI local do Claude Code.
+Dessa forma as chamadas de IA vão pela sessão/plano do Claude Code, sem API key separada.
+"""
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 from typing import Any
 
-import anthropic
-
 from .budget import Budget, BudgetExceeded
 from .config import LLMCfg
 from .db import DB
+
+
+async def _query_claude(prompt: str, system: str) -> tuple[str, int, int]:
+    """Chama o Claude Code SDK e retorna (texto, input_tokens, output_tokens).
+
+    Usa max_turns=1 para que o modelo responda direto em texto, sem executar ferramentas.
+    """
+    from claude_code_sdk import query, ClaudeCodeOptions  # type: ignore[import]
+
+    text_parts: list[str] = []
+    input_tokens = 0
+    output_tokens = 0
+
+    async for message in query(
+        prompt=prompt,
+        options=ClaudeCodeOptions(
+            max_turns=1,
+            system_prompt=system,
+        ),
+    ):
+        # AssistantMessage: contém os blocos de texto da resposta
+        if getattr(message, "role", None) == "assistant":
+            for block in getattr(message, "content", []):
+                if getattr(block, "type", None) == "text" and hasattr(block, "text"):
+                    text_parts.append(block.text)
+
+        # ResultEvent: metadados de uso/custo ao final da sessão
+        elif hasattr(message, "usage") and message.usage is not None:
+            usage = message.usage
+            input_tokens = int(getattr(usage, "input_tokens", 0) or 0)
+            output_tokens = int(getattr(usage, "output_tokens", 0) or 0)
+
+    return "".join(text_parts), input_tokens, output_tokens
+
+
+def _run_async(coro: Any) -> Any:
+    """Executa uma coroutine em contexto síncrono."""
+    try:
+        # asyncio.run() cria um loop novo — funciona enquanto não há loop ativo na thread
+        return asyncio.run(coro)
+    except RuntimeError:
+        # Fallback: já existe um loop na thread (ex.: Jupyter ou testes assíncronos)
+        loop = asyncio.new_event_loop()
+        try:
+            return loop.run_until_complete(coro)
+        finally:
+            loop.close()
 
 
 def _log_call(purpose: str, model: str, system: str, user: str, pin: int, pout: int, cached: int) -> None:
@@ -41,52 +91,44 @@ class LLM:
     def __init__(self, cfg: LLMCfg, db: DB | None = None):
         self.cfg = cfg
         self.db = db
-        self.client = anthropic.Anthropic()
         self.budget = (Budget(db, cfg.monthly_budget_brl, cfg.usd_brl, since=cfg.budget_since,
                               overrides_brl=cfg.budget_overrides_brl) if db is not None else None)
 
     # ---------- base ----------
     def json(self, *, model: str, system: str, user: str, purpose: str,
              temperature: float | None = None, max_tokens: int | None = None) -> dict:
+        # O parâmetro `model` é ignorado: o SDK usa o modelo configurado no Claude Code.
+        # `temperature` e `max_tokens` não são expostos pelo SDK na versão atual.
         if self.budget is not None and not self.budget.allows(purpose):
             raise BudgetExceeded(self.budget.why_blocked(purpose))
-        kw: dict[str, Any] = dict(
-            model=model,
-            max_tokens=max_tokens or 4096,
-            system=system + "\n\nIMPORTANTE: Responda SOMENTE com JSON válido, sem texto antes ou depois.",
-            messages=[{"role": "user", "content": user}],
-        )
-        if temperature is not None:
-            kw["temperature"] = temperature
+
+        system_final = system + "\n\nIMPORTANTE: Responda SOMENTE com JSON válido, sem texto antes ou depois."
         last_err: Exception | None = None
         last_content: str = "{}"
+        retry_prompt = user
+
         for attempt in range(3):
             try:
-                resp = self.client.messages.create(**kw)
-                last_content = (resp.content[0].text if resp.content else "{}")
-                if self.db and resp.usage:
-                    cached = getattr(resp.usage, "cache_read_input_tokens", 0) or 0
-                    self.db.add_llm_usage(model, purpose, resp.usage.input_tokens, resp.usage.output_tokens, cached)
+                last_content, pin, pout = _run_async(_query_claude(retry_prompt, system_final))
+                if self.db and (pin or pout):
+                    self.db.add_llm_usage(model, purpose, pin, pout, 0)
                     if self.budget is not None:
                         self.budget._cache.clear()
-                    _log_call(purpose, model, system, user, resp.usage.input_tokens, resp.usage.output_tokens, cached)
+                    _log_call(purpose, model, system, user, pin, pout, 0)
                 content = re.sub(r"^```(?:json)?\s*|\s*```$", "", last_content.strip())
                 return json.loads(content)
             except json.JSONDecodeError as e:
                 last_err = e
-                kw["messages"].append({"role": "assistant", "content": last_content})
-                kw["messages"].append({"role": "user", "content": "Responda SOMENTE com um JSON válido, sem texto adicional."})
-            except anthropic.APIStatusError as e:
+                # Na próxima tentativa reforça a instrução de JSON no prompt do usuário
+                retry_prompt = user + "\n\nResposta anterior inválida. Responda SOMENTE com JSON válido, sem texto adicional."
+            except Exception as e:
                 msg = str(e)
-                if "credit_balance_exhausted" in msg or e.status_code == 402:
-                    raise BudgetExceeded("créditos da Anthropic esgotados: seguindo só pelo caminho sem IA") from e
-                last_err = e
-                import time
-                time.sleep(2 * (attempt + 1))
-            except anthropic.APIConnectionError as e:
-                last_err = e
-                import time
-                time.sleep(2 * (attempt + 1))
+                if "rate_limit" in msg.lower() or "overloaded" in msg.lower():
+                    last_err = e
+                    import time
+                    time.sleep(2 * (attempt + 1))
+                else:
+                    raise
         raise RuntimeError(f"LLM falhou ({purpose}): {last_err}")
 
     # ---------- classificação ----------
